@@ -1,0 +1,10 @@
+{
+  "short_name": "BICC",
+  "name": "Biswas Investigation Centre & Clinic",
+  "icons": [{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#07543B",
+  "background_color": "#FAFCFA",
+  "lang": "en-BD"
+}
