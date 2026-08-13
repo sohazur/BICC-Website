@@ -28,8 +28,13 @@
 - [x] Restore language persistence, document-language updates, semantic controls, labels, focus states, and reduced-motion behavior.
 - [x] Repair package-lock reproducibility, tests, mobile layout, asset weight, SEO/schema/social metadata, and inactive-link behavior.
 - [x] Run clean install, automated tests, optimized build, desktop/mobile browser QA, console/network/overflow checks, and content-count assertions.
-- [ ] Commit and push only the standalone website repository, deploy only `bicc-health-khulna`, and verify the live release.
+- [x] Commit and push only the standalone website repository, deploy only `bicc-health-khulna`, and verify the live release.
 
 ## Review
 
-- Pending implementation and release verification.
+- Imported the owner-supplied identity and content into a focused patient website with bilingual navigation, an official 92 KB transparent logo, 156 diagnostic tests, 60 English doctor records, and 60 Bangla doctor records.
+- Added search-first diagnostic and doctor directories, clinic/admission/OT/cabin information, admitted-patient pharmacy details, booking-request preparation, real contact/social/location actions, and an accessible mobile quick-action dock.
+- Verification passed: clean `npm ci`, 6/6 automated tests, optimized production build (68.89 KB JavaScript and 6.07 KB CSS gzip), `git diff --check`, mobile and desktop browser QA, no console warnings/errors, no horizontal overflow, no duplicate IDs, no unnamed controls, and no empty links.
+- Published commit `c6766be` to the public `sohazur/BICC-Website` repository. GitHub attributes the commit to `sohazur` via `71766945+sohazur@users.noreply.github.com`.
+- Deployed only Firebase Hosting target `bicc-health-khulna` in project `bicc-e73e8`; the internal clinic Hosting site, Functions, Firestore rules, indexes, and production data were not changed.
+- Live verification passed at `https://bicc-health-khulna.web.app/`: HTTP 200, expected security/cache headers, optimized assets, correct SEO/schema metadata, 156-test and 60-doctor UI counts, clean console, and 390 px / 1280 px layouts without overflow.
