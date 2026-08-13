@@ -1,5 +1,7 @@
 /build
 /node_modules
+/functions/node_modules
 /.firebase
 .DS_Store
 npm-debug.log*
+firebase-debug.log*
