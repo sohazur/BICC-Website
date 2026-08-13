@@ -61,10 +61,18 @@
 - [x] Replace visible Choto Boyra shorthand with Sonadanga while retaining the complete verified address.
 - [x] Replace the decorative visit map with an interactive Google Maps embed.
 - [x] Add the isolated website enquiry function, private Firestore persistence, validation, consent, rate limiting, idempotency, and resilient UI states.
-- [ ] Extend frontend and function tests, then run clean install, unit tests, optimized build, and diff checks.
-- [ ] Run bilingual browser QA across phone/tablet/desktop and verify the live save endpoint without touching clinic app data or rules.
-- [ ] Commit and push only `BICC-Website`; deploy only the website function codebase and `bicc-health-khulna` Hosting target.
+- [x] Extend frontend and function tests, then run clean install, unit tests, optimized build, and diff checks.
+- [x] Run bilingual browser QA across phone/tablet/desktop and verify the live save endpoint without touching clinic app data or rules.
+- [x] Commit and push only `BICC-Website`; deploy only the website function codebase and `bicc-health-khulna` Hosting target.
 
 ## Review
 
-- Pending implementation and production verification.
+- Rebuilt the three-step journey as a real ordered ECG path with icons and direct service/call/map actions. Desktop keeps the horizontal pulse; phone layouts use a connected vertical pulse and compact action cards in both English and Bangla.
+- Contained all-doctor results in a keyboard-labelled internal scroll region: 497px at 320×667, 600px at 390×844, and 650px at tablet/desktop sizes. All 60 records remain rendered and searchable, with stable group counts across both languages and a keyboard skip link to Clinic.
+- Fixed the clinic image's accidental 800px rendered height by overriding its intrinsic height and removing default figure margins. The phone crop is now 245px, clinic copy/actions precede the image, and all patient-facing placeholder/replacement notes are gone.
+- Changed visible locality shorthand to Sonadanga while retaining Choto Boyra inside the complete postal address. Replaced the decorative map with a lazy, localized interactive Google Maps embed pinned to the verified coordinates; visit copy/actions precede the map on phones.
+- Created deletion-protected named Firestore database `bicc-public` in `nam5`, deployed deny-all browser rules and TTL policies, and deployed only website codebase function `submitPublicWebsiteRequest` in `asia-south1`. The six clinic functions in the `default` codebase remained unchanged.
+- The save endpoint validates and canonicalizes all fields, requires consent, rejects disallowed origins, limits payload/field sizes, uses a honeypot, hashes the IP into an hourly limit key, and treats repeated UUIDs idempotently. WhatsApp, SMS, copy, and call remain available if saving fails.
+- Automated verification passed: 8/8 React tests, 5/5 server validation tests, optimized build (70.88 KB JavaScript and 6.33 KB CSS gzip), and `git diff --check`.
+- Live bilingual QA passed at 320, 390, 768, and 1280px with no horizontal overflow or console warnings/errors. The real production form stored a QA request, repeated direct submission returned success without duplication, an unauthorized origin returned HTTP 403, and the QA document was removed afterward (`release_qa_documents=0`).
+- Published website commits `05ea5b4` and `409079c` to `sohazur/BICC-Website`; Firebase Hosting serves bundle `main.b3b7f813.js` at `https://bicc-health-khulna.web.app/`.
