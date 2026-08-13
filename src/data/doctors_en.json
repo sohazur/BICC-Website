@@ -1,0 +1,442 @@
+{
+  "Medicine, chest disease & cardiology": [
+    {
+      "name": "Dr. Mostofa Kamal",
+      "qualifications": "MBBS (Dhaka); MRCP (London); MCPS (Medicine); MPH (Philippines); Member, Royal College of Physicians, London",
+      "position": "Head of Department — Cardiology",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Medicine, rheumatology, gastroenterology & liver disease": [
+    {
+      "name": "Dr. Md. Akhtaruzzaman",
+      "qualifications": "MBBS; BCS (Health); FCPS (Medicine — Final Part)",
+      "position": "Superintendent & Deputy Director",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Chest disease & medicine": [
+    {
+      "name": "Dr. Shahed Rashid Mohammad Saiful Aziz",
+      "qualifications": "MBBS; BCS (Health); D.T.M.T. (Medicine)",
+      "position": "Assistant Professor (Retd.) — Chest Disease Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Prof. Dr. Paritosh Kumar Chowdhury",
+      "qualifications": "MBBS; BCS (Health); DTCP; PGT (Medicine & Cardiology)",
+      "position": "Professor & Head of Department (Retd.)",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "—": [
+    {
+      "name": "Prof. Dr. Haridas Biswas",
+      "qualifications": "MBBS; BCS (Health); MCPS; DTMF; PGT (Medicine); FRSH (London)",
+      "position": "Professor (Retd.)",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Naznin Nahar",
+      "qualifications": "MBBS; BCS (Health); MD (Pathology) (BSMMU)",
+      "position": "Associate Professor — Pathology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Belal Hossain",
+      "qualifications": "MBBS; BCS (Health); DLM (Laser Medicine); Trainer (Biochemistry)",
+      "position": "Consultant — Pathology",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Cardiology & medicine": [
+    {
+      "name": "Dr. Himel Sana",
+      "qualifications": "MBBS; BCS (Health); CCD (BIRDEM); D-Card (Cardiology)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Foysal Alam",
+      "qualifications": "MBBS; BCS (Health); D-Card (BSMMU, ex-PG Hospital); MAC (USA)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Gynaecology, obstetrics, laparoscopic & infertility care": [
+    {
+      "name": "Dr. Shamima Jahan Sathi",
+      "qualifications": "MBBS; FCPS (FP); PGT (Gynae & Obs.); Diploma in Ultrasonography & Color Doppler",
+      "position": "Consultant",
+      "institute": "Labaid Limited (Diagnostic), Khulna"
+    }
+  ],
+  "Gynaecology, obstetrics & diseases of women": [
+    {
+      "name": "Dr. Urmi Haldar",
+      "qualifications": "MBBS; BCS (Health); DGO",
+      "position": "Resident Surgeon (RS)",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Khaleda Parvin",
+      "qualifications": "MBBS; BCS (Health); FCPS (Gynae & Obs.); MCPS (Gynae & Obs.)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Keya Debnath",
+      "qualifications": "MBBS (Dhaka); BCS (Health); MS (Gynae & Obs.)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Julekha Akter (Jeli)",
+      "qualifications": "MBBS (Dhaka); BCS (Health); FCPS (Gynae & Obs.); MCPS (Gynae & Obs.)",
+      "position": "Medical Officer — Gynaecology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Barnali Das",
+      "qualifications": "MBBS (RU); CMU; DMU; PGT (Gynae & Obs.); HMO (KMCH)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Gynaecology, infertility & obstetrics": [
+    {
+      "name": "Dr. Jannatul Ferdousi (Rina)",
+      "qualifications": "MBBS (Dhaka); BCS (Health); DGO; MCPS; FCPS-FP (Gynae & Obs.); MS (Gynaecological Oncology — Japan)",
+      "position": "—",
+      "institute": "Dhaka Medical College Hospital, Dhaka"
+    }
+  ],
+  "Gynaecology & obstetric specialist and surgeon": [
+    {
+      "name": "Dr. Asama Binte Khayer",
+      "qualifications": "MBBS (DMC); BCS (Health); MS (Gynae & Obs.) (BSMMU)",
+      "position": "Consultant — Gynaecology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Gynaecology, obstetrics & infertility specialist and surgeon": [
+    {
+      "name": "Dr. Popy Rani Kundu",
+      "qualifications": "MBBS; BCS (Health); MS (Obs. & Gynae); FCPS-FP (Obs. & Gynae); Higher training in Urogynaecology",
+      "position": "—",
+      "institute": "Khulna (Abu Naser) Specialized Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Urmi Chowdhury",
+      "qualifications": "MBBS; BCS (Health); DGO (Gynae & Obs.); CCD (BIRDEM); CPH (Ultra)",
+      "position": "Registrar — Gynaecology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Mental health, neuromedicine, sex medicine, addiction & diabetes": [
+    {
+      "name": "Dr. SM Saiful Islam Raju",
+      "qualifications": "MBBS; BCS (Health); MD (Psychiatry) (BSMMU)",
+      "position": "Assistant Professor & Head — Psychiatry Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Brain, nerve, rheumatic pain & neuromedicine": [
+    {
+      "name": "Dr. Md. Al Amin",
+      "qualifications": "MBBS; BCS (Health); CCD (BIRDEM); FCPS-FP (Neurology); MCPS (Medicine); MRCP (England); FACP/MCPS (USA)",
+      "position": "Consultant — Neuromedicine Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Brain, nerve & neuromedicine": [
+    {
+      "name": "Dr. Selim Ahmed",
+      "qualifications": "MBBS; BCS (Health); FCPS (Neuromedicine — Final Part)",
+      "position": "Assistant Registrar — Neuromedicine Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Brain, nerve, spinal cord & neurological disorders": [
+    {
+      "name": "Dr. Md. Riaz Ahmed Howlader",
+      "qualifications": "MBBS; BCS (Health); MS (Neurosurgery); Member, European Association of Neurosurgical Societies",
+      "position": "Assistant Professor — Neurosurgery & Surgeon",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Surgery & laparoscopic surgery": [
+    {
+      "name": "Dr. Md. Shahidul Islam Mukul",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery); FCSS (USA); FCSS (India)",
+      "position": "Assistant Professor — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. G. M. Nuruzzaman",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery); FCSS (USA)",
+      "position": "Assistant Professor — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Jyotirmoy Saha",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery)",
+      "position": "Senior Consultant — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Monowar Hossain",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery); MS (Surgical Oncology)",
+      "position": "Associate Professor — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "General & laparoscopic surgery": [
+    {
+      "name": "Dr. Palash Kumar De",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery); FCPS (USA)",
+      "position": "Consultant — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Aniruddha Sarkar",
+      "qualifications": "MBBS (Dhaka); BCS (Health); FCPS (Surgery)",
+      "position": "Associate Professor — Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "General & surgery": [
+    {
+      "name": "Dr. Subrata Kumar Mondal",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Mental health, brain & mind disorders": [
+    {
+      "name": "Dr. Rupa Hui",
+      "qualifications": "MBBS; BCS (Health); FCPS (Psychiatry) — FP; Special Training in Child Psychiatry",
+      "position": "Psychiatrist",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Orthopaedics, rheumatic pain & disability": [
+    {
+      "name": "Dr. Bayezid Mostofa",
+      "qualifications": "MBBS; BCS (Health); MS (Orthopaedic Surgery)",
+      "position": "Associate Professor — Orthopaedic Surgery & Surgeon",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Bishwanath Kumar Mondal",
+      "qualifications": "MBBS; BCS (Health); MS (Orthopaedic Surgery)",
+      "position": "Associate Professor — Orthopaedic Surgery & Surgeon",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Shibendu Mitra",
+      "qualifications": "MBBS; BCS (Health); MS (Orthopaedic Surgery)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "ENT (ear, nose & throat)": [
+    {
+      "name": "Prof. Dr. Sutanu Kumar Mondal",
+      "qualifications": "MBBS; BCS (Health); MS (ENT)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Mainul Islam",
+      "qualifications": "MBBS; BCS (Health); MS (ENT) (BSMMU)",
+      "position": "Consultant — ENT Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Mithun Pal",
+      "qualifications": "MBBS; DLO (ENT)",
+      "position": "Associate Professor — ENT Department",
+      "institute": "Gazi Medical College Hospital, Khulna"
+    }
+  ],
+  "Cardiology, diabetes, neuromedicine, gastroenterology, dermatology & venereal disease": [
+    {
+      "name": "Dr. Sheikh Mahibur Rahman (Rizvi)",
+      "qualifications": "MBBS (KMC); MCPS (USA); FCPS (Medicine — Part 2)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Kidney, urinary tract, bladder & testicular disorders": [
+    {
+      "name": "Dr. A. S. M. Humayun Kabir (Apu)",
+      "qualifications": "MBBS; BCS (Health); MS (Urology); Fellow, European Association of Urology; Higher Training in Uro-Urology (India)",
+      "position": "Assistant Professor — Urology Department",
+      "institute": "Khulna (Abu Naser) Specialized Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Abul Kalam Azad",
+      "qualifications": "MBBS; BCS (Health); MS (Urology)",
+      "position": "Assistant Professor — Urology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Sheikh Nazibul Islam",
+      "qualifications": "MBBS; BCS (Health); MS (Urology) (BSMMU)",
+      "position": "Registrar — Urology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Kidney, prostate, urinary tract, bladder & male sexual disorders": [
+    {
+      "name": "Dr. Golam Sarwar",
+      "qualifications": "MBBS; BCS (Health); PGT (Surgery); MS (Urology); Urologist & Andrologist",
+      "position": "Assistant Professor — Urology Department",
+      "institute": "Shaheed Sheikh Abu Naser Specialized Hospital, Khulna"
+    }
+  ],
+  "Kidney disease, medicine & dialysis": [
+    {
+      "name": "Dr. Siddhartha Baowali",
+      "qualifications": "MBBS; BCS (Health); M.B.B. (Nephrology)",
+      "position": "Associate Professor — Nephrology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Kidney disease & medicine": [
+    {
+      "name": "Dr. Palash Tarafdar",
+      "qualifications": "MBBS; BCS (Health); MD (Nephrology)",
+      "position": "Assistant Professor — Nephrology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Cancer & medicine": [
+    {
+      "name": "Dr. Shabnam Sultana",
+      "qualifications": "MBBS (MSF); BCS (Health); MD (Oncology); MS (Surgical Oncology)",
+      "position": "Assistant Professor — Cancer Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Haematology & medicine": [
+    {
+      "name": "Dr. Farzana Akter Moi",
+      "qualifications": "MBBS (Dhaka); MD (Transfusion Medicine) (BSMMU)",
+      "position": "Assistant Professor — Transfusion Medicine Department",
+      "institute": "Khulna City Medical College Hospital, Khulna"
+    }
+  ],
+  "Neonatal, paediatric & adolescent surgery": [
+    {
+      "name": "Dr. Sahadev Kumar Das",
+      "qualifications": "MBBS; BCS (Health); FCPS (Surgery); MS (Paediatric Surgery)",
+      "position": "Assistant Professor — Paediatric Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Neonatal, general & laparoscopic surgery; paediatric urology & burns": [
+    {
+      "name": "Dr. Dipendu Kumar Das",
+      "qualifications": "MBBS; BCS (Health); MS (Paediatric Surgery); Training in Burns & Plastic Surgery, Urology",
+      "position": "Assistant Registrar — Paediatric Surgery Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Neonatal, paediatric medicine & nutrition": [
+    {
+      "name": "Dr. Palash Biswas",
+      "qualifications": "MBBS; BCS (Health); FCPS-FP (Paediatrics); MD (Paediatrics); IGMS (Paediatrics), USA",
+      "position": "Senior Consultant — Paediatrics Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Ophthalmology & microsurgery": [
+    {
+      "name": "Dr. Md. Shamim Hasan",
+      "qualifications": "MBBS (Dhaka); BCS (Health); MFPO (Ophthalmology) (USA); FCPS (Ophthalmology — Final Part)",
+      "position": "Consultant — Ophthalmology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Medicine, rheumatic pain, back pain, vasculitis & osteoporosis": [
+    {
+      "name": "Dr. M. Mahmud Hossain (Antu)",
+      "qualifications": "MBBS (Dhaka); BCS (Health); MD (Rheumatology); BSMMU (PG Hospital)",
+      "position": "—",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Medicine, neuromedicine, gastro-liver, rheumatic pain & vasculitis": [
+    {
+      "name": "Dr. Md. Monirul Haque",
+      "qualifications": "MBBS; BCS (Health); MRCP (UK)",
+      "position": "Medical Officer — Medicine Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Medicine": [
+    {
+      "name": "Dr. Badal Chandra Debnath",
+      "qualifications": "MBBS; BCS (Health); FCPS, Part 2 (Medicine); MRCP, Part 2 (London)",
+      "position": "Registrar — Medicine Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    },
+    {
+      "name": "Dr. Md. Khalid Anjum",
+      "qualifications": "MBBS (KMC); PGT (Medicine)",
+      "position": "Medical Officer (Civil)",
+      "institute": "Bangladesh Navy Hospital, Khulna"
+    }
+  ],
+  "Dermatology, venereology & allergy; cosmetic laser surgery": [
+    {
+      "name": "Dr. Md. Yunus Ali",
+      "qualifications": "MBBS; BCS (Health); DDV (BSMMU)",
+      "position": "Assistant Professor — Dermatology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Dermatology, venereology, allergy & respiratory-related disorders; cosmetic & laser surgery": [
+    {
+      "name": "Dr. Abdullah Al Mamun",
+      "qualifications": "MBBS; BCS (Health); DDV (BSMMU); Advanced Training in Laser & Aesthetic Surgery",
+      "position": "Consultant — Dermatology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Dermatology, venereology, allergy & sex medicine; cosmetic & laser surgery": [
+    {
+      "name": "Dr. Md. Iftiyak Mahmud",
+      "qualifications": "MBBS; BCS (Health); DDV (BSMMU)",
+      "position": "Consultant — Dermatology Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Neonatal, child & adolescent medicine and child nutrition": [
+    {
+      "name": "Dr. Mithun Debnath",
+      "qualifications": "MBBS; BCS (Health); MCPS (Child Medicine); MD (Child Medicine); Dhaka Shishu Hospital, Dhaka",
+      "position": "Consultant — Paediatrics Department",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "ENT, thyroid, diabetes, head & neck diseases; specialist & surgeon": [
+    {
+      "name": "Dr. Md. Yasir Arafat",
+      "qualifications": "MBBS; BCS (Health); CCD (BIRDEM); FCPS (ENT) — FP; MCPS (ENT); MRCS (ENT) — London, England",
+      "position": "ENT & HeadNeck Surgery Depertment",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ],
+  "Obstetrics, gynaecology & surgery": [
+    {
+      "name": "Dr. Muslima Yasmin Tumpu",
+      "qualifications": "MBBS (Rajshahi); BCS (Health); DGO (Obstetrics & Gynaecology) (Former PG Hospital)",
+      "position": "Assistant Registrar — Obstetrics & Gynaecology",
+      "institute": "Khulna Medical College Hospital, Khulna"
+    }
+  ]
+}
