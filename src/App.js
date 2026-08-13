@@ -45,7 +45,7 @@ export default function App() {
         <Doctors lang={lang} t={t} />
         <Clinic lang={lang} t={t} phoneLink={PHONE_LINK} />
         <Pharmacy t={t} />
-        <Booking t={t} />
+        <Booking lang={lang} t={t} />
         <Visit lang={lang} t={t} />
       </main>
       <Footer t={t} />

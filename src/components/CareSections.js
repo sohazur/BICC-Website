@@ -21,7 +21,6 @@ export function Clinic({ lang, t, phoneLink }) {
         </div>
         <figure className="clinic-image">
           <img src="/images/bicc-cabin.jpg" loading="lazy" width="1200" height="800" alt={lang === 'bn' ? 'একটি পরিচ্ছন্ন ক্লিনিক কেবিনে নার্স, রোগী ও পরিবারের সদস্য' : 'A nurse, patient and family member in a clean clinic cabin'} />
-          <figcaption>{t.photoNote}</figcaption>
         </figure>
       </div>
     </section>

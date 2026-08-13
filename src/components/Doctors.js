@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { Search, Stethoscope } from 'lucide-react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { ChevronsDown, Search, Stethoscope } from 'lucide-react';
 import doctorsEn from '../data/doctors_en.json';
 import doctorsBn from '../data/doctors_bn.json';
 import { doctorGroups, PHONE_LINK } from '../content';
@@ -26,7 +26,13 @@ const classifyDoctor = (doctor) => {
 export default function Doctors({ lang, t }) {
   const [query, setQuery] = useState('');
   const [activeGroup, setActiveGroup] = useState('medicine');
-  const directory = useMemo(() => flatten(lang === 'bn' ? doctorsBn : doctorsEn).map((doctor) => ({ ...doctor, group: classifyDoctor(doctor) })), [lang]);
+  const [canScroll, setCanScroll] = useState(false);
+  const resultsRef = useRef(null);
+  const directory = useMemo(() => {
+    const englishDirectory = flatten(doctorsEn);
+    const localizedDirectory = lang === 'bn' ? flatten(doctorsBn) : englishDirectory;
+    return localizedDirectory.map((doctor, index) => ({ ...doctor, group: classifyDoctor(englishDirectory[index]) }));
+  }, [lang]);
   const normalizedQuery = query.trim().toLowerCase();
 
   const counts = useMemo(() => directory.reduce((result, doctor) => ({ ...result, [doctor.group]: (result[doctor.group] || 0) + 1 }), {}), [directory]);
@@ -35,6 +41,24 @@ export default function Doctors({ lang, t }) {
     const searchable = `${doctor.name} ${doctor.qualifications} ${doctor.specialty} ${doctor.position} ${doctor.institute}`.toLowerCase();
     return matchesGroup && (!normalizedQuery || searchable.includes(normalizedQuery));
   }), [activeGroup, directory, normalizedQuery]);
+
+  useEffect(() => {
+    if (resultsRef.current) resultsRef.current.scrollTop = 0;
+  }, [activeGroup, lang, normalizedQuery]);
+
+  useLayoutEffect(() => {
+    const region = resultsRef.current;
+    if (!region) return undefined;
+    const measure = () => setCanScroll(region.scrollHeight > region.clientHeight + 2);
+    measure();
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(measure);
+    observer?.observe(region);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [visibleDoctors]);
 
   return (
     <section className="directory-section doctors section-pad" id="doctors" aria-labelledby="doctors-title">
@@ -66,22 +90,28 @@ export default function Doctors({ lang, t }) {
         )}
 
         <div className="directory-result-heading" aria-live="polite">
-          <span><Stethoscope aria-hidden="true" />{visibleDoctors.length} {visibleDoctors.length === 1 ? t.doctor : t.doctors}</span>
+          <span id="doctor-results-label"><Stethoscope aria-hidden="true" />{visibleDoctors.length} {visibleDoctors.length === 1 ? t.doctor : t.doctors}</span>
           <small>{t.sourceNote}</small>
         </div>
 
         {visibleDoctors.length ? (
-          <div className="doctor-grid">
-            {visibleDoctors.map((doctor) => (
-              <article className="doctor-card" key={`${doctor.name}-${doctor.qualifications}`}>
-                <p className="doctor-specialty">{doctor.specialty === '—' ? doctorGroups.find((group) => group.id === doctor.group)?.[lang] : doctor.specialty}</p>
-                <h3>{doctor.name}</h3>
-                <p className="doctor-qualifications">{doctor.qualifications}</p>
-                {doctor.position && doctor.position !== '—' && <p className="doctor-position">{doctor.position}</p>}
-                {doctor.institute && <p className="doctor-institute">{doctor.institute}</p>}
-                <a href={`tel:${PHONE_LINK}`}>{lang === 'bn' ? 'সময়সূচি জানতে কল করুন' : 'Call to confirm schedule'}</a>
-              </article>
-            ))}
+          <div className="doctor-results-frame">
+            {canScroll && <p className="doctor-scroll-cue" id="doctor-scroll-instructions"><ChevronsDown aria-hidden="true" />{t.doctorScroll}</p>}
+            <a className="skip-doctors" href="#clinic">{lang === 'bn' ? 'ডাক্তারের তালিকা এড়িয়ে ক্লিনিক সেবায় যান' : 'Skip doctor list and continue to clinic care'}</a>
+            <div className="doctor-scroll" ref={resultsRef} tabIndex="0" role="region" aria-labelledby="doctor-results-label" aria-describedby={canScroll ? 'doctor-scroll-instructions' : undefined}>
+              <div className="doctor-grid">
+                {visibleDoctors.map((doctor) => (
+                  <article className="doctor-card" key={`${doctor.name}-${doctor.qualifications}`}>
+                    <p className="doctor-specialty">{doctor.specialty === '—' ? doctorGroups.find((group) => group.id === doctor.group)?.[lang] : doctor.specialty}</p>
+                    <h3>{doctor.name}</h3>
+                    <p className="doctor-qualifications">{doctor.qualifications}</p>
+                    {doctor.position && doctor.position !== '—' && <p className="doctor-position">{doctor.position}</p>}
+                    {doctor.institute && <p className="doctor-institute">{doctor.institute}</p>}
+                    <a href={`tel:${PHONE_LINK}`}>{lang === 'bn' ? 'সময়সূচি জানতে কল করুন' : 'Call to confirm schedule'}</a>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         ) : <p className="empty-state" role="status">{t.noDoctors}</p>}
       </div>

@@ -4,6 +4,7 @@ export const WHATSAPP_URL = 'https://wa.me/8801912521615';
 export const FACEBOOK_URL = 'https://www.facebook.com/biswasicc/';
 export const INSTAGRAM_URL = 'https://www.instagram.com/biswas_clinic_khulna/';
 export const MAP_URL = 'https://www.google.com/maps/place/Biswas+Investigation+Centre+%26+Clinic/@22.8269002,89.5389531,15z/data=!4m16!1m9!3m8!1s0x39ff9abb68f21e79:0x6a640ec4bf5dea9d!2sBiswas+Investigation+Centre+%26+Clinic!8m2!3d22.8269002!4d89.5389531!16s%2Fg%2F11g6wvfdj5';
+export const MAP_EMBED_URL = 'https://www.google.com/maps?q=22.8269002%2C89.5389531&z=17&output=embed';
 
 export const clinicAddress = {
   en: 'K.D.A. Plot & Holding No. EX-2, east side of Khulna Medical College Hospital, Choto Boyra, Sonadanga, Khulna 9000, Bangladesh.',
@@ -26,6 +27,16 @@ export const doctorGroups = [
   { id: 'other', en: 'Other specialists', bn: 'অন্যান্য বিশেষজ্ঞ' }
 ];
 
+export const serviceOptions = [
+  { id: 'diagnostic', en: 'Diagnostic test', bn: 'ডায়াগনস্টিক পরীক্ষা' },
+  { id: 'doctor', en: 'Doctor consultation', bn: 'ডাক্তার দেখানো' },
+  { id: 'admission', en: 'IPD / admission enquiry', bn: 'আইপিডি / ভর্তি' },
+  { id: 'surgery', en: 'OT / surgery enquiry', bn: 'OT / সার্জারি' },
+  { id: 'cabin', en: 'Cabin enquiry', bn: 'কেবিন' },
+  { id: 'pharmacy', en: 'Pharmacy enquiry', bn: 'ফার্মেসি' },
+  { id: 'other', en: 'Other', bn: 'অন্যান্য' }
+];
+
 export const copy = {
   en: {
     skip: 'Skip to main content',
@@ -43,8 +54,9 @@ export const copy = {
     journey: [
       ['Tell us what you need', 'Choose a test, specialist or clinic enquiry.'],
       ['Confirm by phone', 'We verify schedule, preparation and availability.'],
-      ['Come to BICC', 'Open Maps and arrive at EX-2, Choto Boyra.']
+      ['Come to BICC', 'Open Maps and arrive at EX-2, Sonadanga.']
     ],
+    journeyActions: ['Find a service', 'Call BICC', 'Open Maps'],
     diagEyebrow: 'Diagnostic directory', diagTitle: 'Find the test you need.',
     diagText: 'Choose a category or search by test name. Rates are intentionally not shown—call to confirm preparation, price and report time.',
     testSearch: 'Search tests', testPlaceholder: 'Try CBC, X-ray, ECG…', tests: 'tests', test: 'test',
@@ -53,7 +65,7 @@ export const copy = {
     doctorText: 'Search by doctor, degree, specialty or institution. Call before visiting to confirm the doctor’s current BICC chamber schedule.',
     doctorSearch: 'Search doctors', doctorPlaceholder: 'Doctor, specialty, degree…', allDoctors: 'All doctors',
     doctors: 'doctors', doctor: 'doctor', noDoctors: 'No matching doctor found. Call BICC and we will guide you.',
-    sourceNote: 'Owner-provided directory · schedules must be confirmed by phone',
+    sourceNote: 'Owner-provided directory · schedules must be confirmed by phone', doctorScroll: 'Scroll inside this list to see more doctors',
     clinicEyebrow: 'Clinic', clinicTitle: 'Care before, during and after admission.',
     clinicText: 'Speak with our team about inpatient admission, operation theatre support and current cabin availability.',
     clinicCards: [
@@ -61,17 +73,18 @@ export const copy = {
       ['Operation Theatre (OT)', 'Surgery begins with a clinical consultation and confirmed doctor plan.'],
       ['Cabins', 'Confirm current cabin availability, facilities and charges before arrival.']
     ],
-    talk: 'Talk to our team', photoNote: 'Illustrative image · replace with a real BICC cabin photo when available',
+    talk: 'Talk to our team',
     pharmacyEyebrow: 'Admitted-patient pharmacy', pharmacyTitle: 'Medicine support, day and night.',
     pharmacyText: 'BICC’s pharmacy supports admitted patients 24/7 with medicines and surgical items. POS receipts support transaction tracking, and bKash and Nagad are accepted.',
     pharmacyFeatures: ['Medicines & surgical items', '24/7 for admitted patients', 'POS tracking & receipts', 'bKash & Nagad accepted'],
-    bookingEyebrow: 'Contact BICC', bookingTitle: 'Prepare your request in under a minute.',
-    bookingText: 'Create a ready-to-send request, then choose WhatsApp, SMS or copy. A message does not book automatically—BICC must confirm it.',
-    name: 'Patient name', phoneLabel: 'Phone number', service: 'What do you need?', date: 'Preferred date', note: 'Anything we should know? (optional)',
-    choose: 'Choose a service', options: ['Diagnostic test', 'Doctor consultation', 'IPD / admission enquiry', 'OT / surgery enquiry', 'Cabin enquiry', 'Pharmacy enquiry', 'Other'],
-    prepare: 'Prepare request', required: 'Enter the patient name, phone number and required service.', ready: 'Your request is ready',
-    readyText: 'Send it, then wait for confirmation or call if the need is urgent.', sendWhatsapp: 'Send on WhatsApp', sendSms: 'Send by SMS', copyRequest: 'Copy request', copied: 'Copied',
-    visitEyebrow: 'Visit BICC', visitTitle: 'Easy to find in Choto Boyra.', address: clinicAddress.en,
+    bookingEyebrow: 'Contact BICC', bookingTitle: 'Save your request in under a minute.',
+    bookingText: 'Save your details for the BICC team, then use WhatsApp, SMS or call if you need a faster response. BICC must still confirm the appointment.',
+    name: 'Patient name', phoneLabel: 'Phone number', service: 'What do you need?', date: 'Preferred date', note: 'Short note—do not include private medical details (optional)',
+    choose: 'Choose a service', consent: 'I agree that BICC may securely store this request and contact me about it.',
+    prepare: 'Save request', saving: 'Saving…', required: 'Enter the patient name, phone number and required service, then agree to be contacted.', ready: 'Request saved',
+    readyText: 'BICC can now review this request. For a faster response, send it on WhatsApp or call.', notSaved: 'Request not saved', saveError: 'We could not save this request. Your details are still here—please use WhatsApp, SMS or call BICC.',
+    sendWhatsapp: 'Send on WhatsApp', sendSms: 'Send by SMS', copyRequest: 'Copy request', copied: 'Copied',
+    visitEyebrow: 'Visit BICC', visitTitle: 'Easy to find in Sonadanga.', address: clinicAddress.en, mapFrameTitle: 'Interactive map showing Biswas Investigation Centre & Clinic in Sonadanga, Khulna',
     openMaps: 'Open Google Maps', copyAddress: 'Copy address', landmark: 'Landmark', landmarkText: 'East side of Khulna Medical College Hospital',
     hours: 'Opening hours', hoursText: 'Facility open 24/7. Call for doctor and test schedules.', access: 'Access', accessText: 'Wheelchair-accessible entrance listed on Google Maps.',
     footerStory: 'Serving Khulna since 09 September 1998 with diagnostic and clinical care built around clear guidance and human dignity.',
@@ -97,8 +110,9 @@ export const copy = {
     journey: [
       ['প্রয়োজন বলুন', 'পরীক্ষা, বিশেষজ্ঞ বা ক্লিনিক অনুসন্ধান বেছে নিন।'],
       ['ফোনে নিশ্চিত করুন', 'সময়, প্রস্তুতি ও সেবার প্রাপ্যতা নিশ্চিত করুন।'],
-      ['BICC-তে আসুন', 'ম্যাপ খুলে ছোট বয়রার EX-2 ঠিকানায় আসুন।']
+      ['BICC-তে আসুন', 'ম্যাপ খুলে সোনাডাঙ্গার EX-2 ঠিকানায় আসুন।']
     ],
+    journeyActions: ['সেবা খুঁজুন', 'BICC-তে কল করুন', 'ম্যাপ খুলুন'],
     diagEyebrow: 'ডায়াগনস্টিক তালিকা', diagTitle: 'প্রয়োজনীয় পরীক্ষাটি খুঁজুন।',
     diagText: 'ক্যাটাগরি বেছে নিন বা পরীক্ষার নাম লিখে খুঁজুন। এখানে মূল্য দেখানো হয়নি—প্রস্তুতি, মূল্য ও রিপোর্টের সময় ফোনে নিশ্চিত করুন।',
     testSearch: 'পরীক্ষা খুঁজুন', testPlaceholder: 'যেমন CBC, X-ray, ECG…', tests: 'টি পরীক্ষা', test: 'টি পরীক্ষা',
@@ -107,7 +121,7 @@ export const copy = {
     doctorText: 'ডাক্তারের নাম, ডিগ্রি, বিশেষজ্ঞতা বা প্রতিষ্ঠান লিখে খুঁজুন। আসার আগে BICC-তে বর্তমান চেম্বারের সময় ফোনে নিশ্চিত করুন।',
     doctorSearch: 'ডাক্তার খুঁজুন', doctorPlaceholder: 'ডাক্তার, বিশেষজ্ঞতা, ডিগ্রি…', allDoctors: 'সব ডাক্তার',
     doctors: 'জন ডাক্তার', doctor: 'জন ডাক্তার', noDoctors: 'কোনো ডাক্তার পাওয়া যায়নি। BICC-তে কল করলে আমরা সাহায্য করব।',
-    sourceNote: 'প্রতিষ্ঠান-প্রদত্ত তালিকা · সময়সূচি ফোনে নিশ্চিত করুন',
+    sourceNote: 'প্রতিষ্ঠান-প্রদত্ত তালিকা · সময়সূচি ফোনে নিশ্চিত করুন', doctorScroll: 'আরও ডাক্তার দেখতে এই তালিকার ভেতরে স্ক্রল করুন',
     clinicEyebrow: 'ক্লিনিক', clinicTitle: 'ভর্তি থেকে চিকিৎসা—প্রতিটি ধাপে যত্ন।',
     clinicText: 'আইপিডি ভর্তি, অপারেশন থিয়েটার সহায়তা এবং বর্তমান কেবিন সম্পর্কে আমাদের দলের সঙ্গে কথা বলুন।',
     clinicCards: [
@@ -115,17 +129,18 @@ export const copy = {
       ['অপারেশন থিয়েটার (OT)', 'সার্জারির আগে ক্লিনিক্যাল পরামর্শ ও ডাক্তারের নিশ্চিত পরিকল্পনা প্রয়োজন।'],
       ['কেবিন', 'আসার আগে কেবিন, সুবিধা ও বর্তমান খরচ নিশ্চিত করুন।']
     ],
-    talk: 'আমাদের সঙ্গে কথা বলুন', photoNote: 'নমুনা ছবি · BICC-এর বাস্তব কেবিনের ছবি পেলে বদলানো হবে',
+    talk: 'আমাদের সঙ্গে কথা বলুন',
     pharmacyEyebrow: 'ভর্তি রোগীর ফার্মেসি', pharmacyTitle: 'দিন-রাত ওষুধ সহায়তা।',
     pharmacyText: 'BICC ফার্মেসি ভর্তি রোগীদের জন্য ২৪/৭ ওষুধ ও সার্জিক্যাল আইটেম সরবরাহ করে। POS রসিদে লেনদেন ট্র্যাক করা হয় এবং বিকাশ ও নগদ গ্রহণ করা হয়।',
     pharmacyFeatures: ['ওষুধ ও সার্জিক্যাল আইটেম', 'ভর্তি রোগীদের জন্য ২৪/৭', 'POS ট্র্যাকিং ও রসিদ', 'বিকাশ ও নগদ গ্রহণযোগ্য'],
-    bookingEyebrow: 'BICC-তে যোগাযোগ', bookingTitle: 'এক মিনিটেই অনুরোধ তৈরি করুন।',
-    bookingText: 'অনুরোধ তৈরি করে হোয়াটসঅ্যাপ, SMS বা কপি করুন। বার্তা পাঠালেই বুকিং হয় না—BICC-এর নিশ্চিতকরণ প্রয়োজন।',
-    name: 'রোগীর নাম', phoneLabel: 'ফোন নম্বর', service: 'কী প্রয়োজন?', date: 'পছন্দের তারিখ', note: 'আর কিছু জানাতে চান? (ঐচ্ছিক)',
-    choose: 'একটি সেবা বেছে নিন', options: ['ডায়াগনস্টিক পরীক্ষা', 'ডাক্তার দেখানো', 'আইপিডি / ভর্তি', 'OT / সার্জারি', 'কেবিন', 'ফার্মেসি', 'অন্যান্য'],
-    prepare: 'অনুরোধ তৈরি করুন', required: 'রোগীর নাম, ফোন নম্বর ও প্রয়োজনীয় সেবা লিখুন।', ready: 'আপনার অনুরোধ প্রস্তুত',
-    readyText: 'পাঠিয়ে নিশ্চিতকরণের অপেক্ষা করুন। জরুরি হলে কল করুন।', sendWhatsapp: 'হোয়াটসঅ্যাপে পাঠান', sendSms: 'SMS পাঠান', copyRequest: 'অনুরোধ কপি করুন', copied: 'কপি হয়েছে',
-    visitEyebrow: 'BICC-তে আসুন', visitTitle: 'ছোট বয়রায় সহজেই খুঁজে পাবেন।', address: clinicAddress.bn,
+    bookingEyebrow: 'BICC-তে যোগাযোগ', bookingTitle: 'এক মিনিটেই অনুরোধ সংরক্ষণ করুন।',
+    bookingText: 'আপনার তথ্য BICC দলের জন্য সংরক্ষণ করুন। দ্রুত উত্তর প্রয়োজন হলে হোয়াটসঅ্যাপ, SMS বা কল করুন। অ্যাপয়েন্টমেন্ট BICC নিশ্চিত করবে।',
+    name: 'রোগীর নাম', phoneLabel: 'ফোন নম্বর', service: 'কী প্রয়োজন?', date: 'পছন্দের তারিখ', note: 'সংক্ষিপ্ত নোট—ব্যক্তিগত চিকিৎসা তথ্য লিখবেন না (ঐচ্ছিক)',
+    choose: 'একটি সেবা বেছে নিন', consent: 'আমি সম্মতি দিচ্ছি যে BICC এই অনুরোধ নিরাপদে সংরক্ষণ করে এ বিষয়ে আমার সঙ্গে যোগাযোগ করতে পারবে।',
+    prepare: 'অনুরোধ সংরক্ষণ করুন', saving: 'সংরক্ষণ হচ্ছে…', required: 'রোগীর নাম, ফোন নম্বর ও প্রয়োজনীয় সেবা লিখে যোগাযোগের সম্মতি দিন।', ready: 'অনুরোধ সংরক্ষিত হয়েছে',
+    readyText: 'BICC এখন অনুরোধটি দেখতে পারবে। দ্রুত উত্তর পেতে হোয়াটসঅ্যাপ বা কল করুন।', notSaved: 'অনুরোধ সংরক্ষণ হয়নি', saveError: 'অনুরোধটি সংরক্ষণ করা যায়নি। আপনার তথ্য এখানেই আছে—হোয়াটসঅ্যাপ, SMS বা ফোনে যোগাযোগ করুন।',
+    sendWhatsapp: 'হোয়াটসঅ্যাপে পাঠান', sendSms: 'SMS পাঠান', copyRequest: 'অনুরোধ কপি করুন', copied: 'কপি হয়েছে',
+    visitEyebrow: 'BICC-তে আসুন', visitTitle: 'সোনাডাঙ্গায় সহজেই খুঁজে পাবেন।', address: clinicAddress.bn, mapFrameTitle: 'সোনাডাঙ্গা, খুলনায় বিশ্বাস ইনভেস্টিগেশন সেন্টার এন্ড ক্লিনিকের ইন্টার‍্যাক্টিভ মানচিত্র',
     openMaps: 'Google Maps খুলুন', copyAddress: 'ঠিকানা কপি করুন', landmark: 'কাছের চিহ্ন', landmarkText: 'খুলনা মেডিকেল কলেজ হাসপাতালের পূর্ব পাশে',
     hours: 'খোলার সময়', hoursText: 'প্রতিষ্ঠান ২৪ ঘণ্টা খোলা। ডাক্তার ও পরীক্ষার সময় ফোনে জানুন।', access: 'প্রবেশ সুবিধা', accessText: 'Google Maps-এ হুইলচেয়ার প্রবেশপথ দেখানো হয়েছে।',
     footerStory: '০৯ সেপ্টেম্বর ১৯৯৮ থেকে খুলনায় পরিষ্কার নির্দেশনা ও মানবিক মর্যাদাকে গুরুত্ব দিয়ে ডায়াগনস্টিক ও ক্লিনিক সেবা।',

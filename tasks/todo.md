@@ -38,3 +38,33 @@
 - Published commit `c6766be` to the public `sohazur/BICC-Website` repository. GitHub attributes the commit to `sohazur` via `71766945+sohazur@users.noreply.github.com`.
 - Deployed only Firebase Hosting target `bicc-health-khulna` in project `bicc-e73e8`; the internal clinic Hosting site, Functions, Firestore rules, indexes, and production data were not changed.
 - Live verification passed at `https://bicc-health-khulna.web.app/`: HTTP 200, expected security/cache headers, optimized assets, correct SEO/schema metadata, 156-test and 60-doctor UI counts, clean console, and 390 px / 1280 px layouts without overflow.
+
+# Patient journey and enquiry refinement — 2026-08-14
+
+## Product and design specification
+
+- **Primary correction:** prevent the doctor directory and other dense sections from making the page feel endless on either phone or desktop.
+- **Journey signature:** keep the ECG route as BICC's memorable visual, but make its ordered path obvious on phones as well as wide screens; each step must read as a confident action, not a generic card.
+- **Doctor directory:** preserve all 60 bilingual records and filters while containing the results in a clearly labelled, keyboard-scrollable viewport sized to roughly two or three rows.
+- **Clinic mobile hierarchy:** lead with the clinic explanation and actions, then show the supporting cabin image; remove all “illustrative/replacement” production copy.
+- **Location language:** use Sonadanga as the visible locality while retaining the complete postal address for accuracy and search.
+- **Visit experience:** replace the drawn map placeholder with an interactive Google Maps embed while keeping the direct Maps and address-copy actions.
+- **Enquiry persistence:** save valid submissions through an isolated, write-only website Cloud Function into a private named Firestore database; do not relax clinic Firestore rules or deploy the clinic application's function codebase.
+- **Safety and privacy:** validate and length-limit all fields server-side, require consent to store/contact, use idempotency, origin enforcement, a honeypot, and hashed-IP hourly limits, expose no public reads, and keep call/WhatsApp/SMS fallbacks when saving fails.
+- **Responsive QA:** verify English and Bangla at narrow phone, standard phone, tablet, and desktop widths, including nested doctor scrolling, clinic order, map interaction, focus states, and no horizontal overflow.
+
+## Implementation checklist
+
+- [x] Redesign the three-step patient journey with a consistent desktop/mobile ECG path and stronger visual hierarchy.
+- [x] Constrain doctor results to an accessible internal scroll region and add a clear bilingual scrolling cue.
+- [x] Reorder and crop the clinic image for mobile; remove illustrative-image copy everywhere.
+- [x] Replace visible Choto Boyra shorthand with Sonadanga while retaining the complete verified address.
+- [x] Replace the decorative visit map with an interactive Google Maps embed.
+- [x] Add the isolated website enquiry function, private Firestore persistence, validation, consent, rate limiting, idempotency, and resilient UI states.
+- [ ] Extend frontend and function tests, then run clean install, unit tests, optimized build, and diff checks.
+- [ ] Run bilingual browser QA across phone/tablet/desktop and verify the live save endpoint without touching clinic app data or rules.
+- [ ] Commit and push only `BICC-Website`; deploy only the website function codebase and `bicc-health-khulna` Hosting target.
+
+## Review
+
+- Pending implementation and production verification.

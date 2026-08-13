@@ -22,6 +22,7 @@ beforeAll(() => {
 
 beforeEach(() => {
   localStorage.clear();
+  global.fetch = jest.fn();
   host = document.createElement('div');
   document.body.appendChild(host);
   root = createRoot(host);
@@ -30,6 +31,7 @@ beforeEach(() => {
 afterEach(() => {
   act(() => root.unmount());
   host.remove();
+  jest.restoreAllMocks();
 });
 
 test('renders verified patient actions and real social destinations', () => {
@@ -71,20 +73,48 @@ test('publishes the 60-doctor bilingual directory with useful specialty filters'
   expect(host.textContent).toContain('Call to confirm schedule');
   const entButton = [...host.querySelectorAll('.filter-pills button')].find((button) => button.textContent.includes('ENT & head-neck care'));
   expect(entButton.textContent).not.toContain('28');
+  expect(host.querySelector('.doctor-scroll').getAttribute('tabindex')).toBe('0');
+  expect(host.querySelector('.doctor-results-frame')).toBeTruthy();
+  expect(host.querySelector('.skip-doctors').getAttribute('href')).toBe('#clinic');
 });
 
-test('validates and prepares a request without claiming it is booked', () => {
+test('validates and saves a request without claiming it is booked', async () => {
+  global.fetch.mockResolvedValue({ ok: true, json: async () => ({ ok: true, requestId: 'saved' }) });
   act(() => root.render(<App />));
   const form = host.querySelector('.request-form');
   setFieldValue(form.elements.name, 'Rahim Uddin');
   setFieldValue(form.elements.phone, '01700000000');
-  setFieldValue(form.elements.service, 'Diagnostic test');
-  act(() => form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
-  expect(host.textContent).toContain('Your request is ready');
+  setFieldValue(form.elements.service, 'diagnostic');
+  click(form.elements.consent);
+  await act(async () => form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
+  expect(global.fetch).toHaveBeenCalledTimes(1);
+  expect(global.fetch.mock.calls[0][0]).toBe('/api/enquiries');
+  expect(JSON.parse(global.fetch.mock.calls[0][1].body)).toMatchObject({ name: 'Rahim Uddin', service: 'diagnostic', consent: true });
+  expect(host.textContent).toContain('Request saved');
   expect(host.textContent).toContain('Rahim Uddin');
-  expect(host.textContent).toContain('does not book automatically');
+  expect(host.textContent).toContain('BICC must still confirm the appointment');
   expect(host.querySelector('.request-ready a[href^="https://wa.me/8801912521615?text="]')).toBeTruthy();
   expect(host.querySelector('.request-ready a[href^="sms:+8801912521615?body="]')).toBeTruthy();
+});
+
+test('keeps fallback actions available when saving fails', async () => {
+  global.fetch.mockRejectedValue(new Error('offline'));
+  act(() => root.render(<App />));
+  const form = host.querySelector('.request-form');
+  setFieldValue(form.elements.name, 'Rahim Uddin');
+  setFieldValue(form.elements.phone, '01700000000');
+  setFieldValue(form.elements.service, 'doctor');
+  click(form.elements.consent);
+  await act(async () => form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
+  expect(host.textContent).toContain('Request not saved');
+  expect(host.querySelector('.request-ready.failed a[href^="https://wa.me/8801912521615?text="]')).toBeTruthy();
+});
+
+test('uses the interactive map, Sonadanga shorthand and no production placeholder note', () => {
+  act(() => root.render(<App />));
+  expect(host.textContent).toContain('Easy to find in Sonadanga.');
+  expect(host.querySelector('.map-frame[src*="google.com/maps"]')).toBeTruthy();
+  expect(host.textContent).not.toContain('Illustrative image');
 });
 
 test('exposes a keyboard-controlled mobile navigation menu', () => {

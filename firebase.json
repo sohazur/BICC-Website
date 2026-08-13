@@ -1,4 +1,16 @@
 {
+  "functions": {
+    "source": "functions",
+    "codebase": "bicc-public-website",
+    "runtime": "nodejs22"
+  },
+  "firestore": [
+    {
+      "database": "bicc-public",
+      "rules": "firestore.public.rules",
+      "indexes": "firestore.public.indexes.json"
+    }
+  ],
   "hosting": {
     "site": "bicc-health-khulna",
     "public": "build",
@@ -19,6 +31,15 @@
         "headers": [{"key": "Cache-Control", "value": "public,max-age=31536000,immutable"}]
       }
     ],
-    "rewrites": [{"source": "**", "destination": "/index.html"}]
+    "rewrites": [
+      {
+        "source": "/api/enquiries",
+        "function": {
+          "functionId": "submitPublicWebsiteRequest",
+          "region": "asia-south1"
+        }
+      },
+      {"source": "**", "destination": "/index.html"}
+    ]
   }
 }
