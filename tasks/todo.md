@@ -101,3 +101,20 @@
 
 - Namecheap now publishes the Firebase apex A record, Hosting ownership TXT record, and `www` CNAME on both authoritative nameservers. The existing email-forwarding SPF TXT record was preserved unchanged.
 - Firebase reports both host mappings and ownership checks active with zero issues. Managed certificates are valid and propagating across Firebase edges; repeated requests still alternate between the intended apex 200 / `www` 301 and temporary Firebase 404s, so global edge convergence and final live-flow verification remain in progress.
+
+# Search Console and TLS follow-up — 2026-08-14
+
+## Checklist
+
+- [x] Re-check authoritative/public DNS, Firebase custom-domain state, and live TLS behavior.
+- [x] Add the `biswasclinic.com` domain property to Google Search Console and verify it through DNS.
+- [x] Submit `https://biswasclinic.com/sitemap.xml` and inspect the resulting status.
+- [ ] Re-test secure apex loading and the intentional `www` redirect after Firebase edge propagation.
+- [x] Document the current Search Console and TLS outcome and push the website repository.
+
+## Review
+
+- The `sc-domain:biswasclinic.com` property is ownership-verified in Google Search Console for `sohazur@reachllm.com` using a Namecheap DNS TXT record. Existing Firebase and email TXT records remain intact.
+- Google Search Console accepted `https://biswasclinic.com/sitemap.xml` with status **Success** and discovered one page on August 14, 2026.
+- A clean Chrome Incognito session loaded the apex over HTTPS with the normal site-information indicator, and `https://www.biswasclinic.com/` redirected to the apex. The older normal-profile tab still showed a stale **Not Secure** label.
+- Firebase reports `www.biswasclinic.com` as `CERT_ACTIVE`; the apex remains `CERT_PROPAGATING`, and this edge can still return a temporary Firebase 404 for the root while the sitemap is available. Keep the final global-edge verification open until Firebase marks the apex certificate active.
