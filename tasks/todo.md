@@ -76,3 +76,27 @@
 - Automated verification passed: 8/8 React tests, 5/5 server validation tests, optimized build (70.88 KB JavaScript and 6.33 KB CSS gzip), and `git diff --check`.
 - Live bilingual QA passed at 320, 390, 768, and 1280px with no horizontal overflow or console warnings/errors. The real production form stored a QA request, repeated direct submission returned success without duplication, an unauthorized origin returned HTTP 403, and the QA document was removed afterward (`release_qa_documents=0`).
 - Published website commits `05ea5b4` and `409079c` to `sohazur/BICC-Website`; Firebase Hosting serves bundle `main.b3b7f813.js` at `https://bicc-health-khulna.web.app/`.
+
+# Public domain launch — 2026-08-14
+
+## Launch specification
+
+- **Primary address:** serve the public website at `https://biswasclinic.com/` with a valid managed TLS certificate.
+- **Canonical behavior:** use the apex domain as the canonical URL and make `www.biswasclinic.com` resolve through Firebase Hosting and redirect to the apex where supported.
+- **Scope boundary:** connect only the standalone `BICC-Website` release and Firebase Hosting site `bicc-health-khulna`; preserve the internal clinic application, its default Hosting site, functions, rules, and data.
+- **DNS safety:** inspect the current Namecheap host records first, change only records that conflict with Firebase Hosting, and preserve unrelated email and verification records.
+- **Application readiness:** allow saved enquiries from the apex and `www` origins, update canonical/social/schema/sitemap URLs, and retain the `web.app` address as a fallback.
+- **Definition of live:** public DNS resolves, HTTPS validates, the apex renders the production website, `www` has intentional behavior, and the enquiry endpoint accepts the custom-domain origin.
+
+## Implementation checklist
+
+- [ ] Inspect existing DNS, redirects, and Firebase custom-domain state.
+- [ ] Add the apex and `www` custom domains to `bicc-health-khulna` and capture Firebase's exact DNS requirements.
+- [ ] Apply the required Namecheap records without disturbing unrelated DNS.
+- [ ] Update production origins and SEO URLs; run automated tests and an optimized build.
+- [ ] Commit and push only `BICC-Website`; deploy only its function codebase and Hosting site.
+- [ ] Verify public DNS, managed HTTPS, apex/`www` behavior, and the live saved-enquiry flow.
+
+## Review
+
+- Pending launch verification.

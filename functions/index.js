@@ -8,7 +8,13 @@ const { validateRequest } = require('./requestValidation');
 
 initializeApp();
 const db = getFirestore('bicc-public');
-const allowedOrigins = new Set(['https://bicc-health-khulna.web.app', 'http://127.0.0.1:4173', 'http://localhost:4173']);
+const allowedOrigins = new Set([
+  'https://biswasclinic.com',
+  'https://www.biswasclinic.com',
+  'https://bicc-health-khulna.web.app',
+  'http://127.0.0.1:4173',
+  'http://localhost:4173'
+]);
 const clientAddress = request => String(request.headers['x-forwarded-for'] || request.ip || '').split(',')[0].trim();
 const rateKey = request => crypto.createHash('sha256').update(`${new Date().toISOString().slice(0, 13)}:${clientAddress(request)}`).digest('hex');
 
@@ -42,7 +48,7 @@ exports.submitPublicWebsiteRequest = onRequest({ region: 'asia-south1', cors: fa
         language: validated.language,
         consent: true,
         status: 'new',
-        source: 'bicc-health-khulna',
+        source: 'biswasclinic.com',
         createdAt: FieldValue.serverTimestamp(),
         expireAt: Timestamp.fromMillis(Date.now() + 90 * 24 * 60 * 60 * 1000)
       });

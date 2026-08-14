@@ -4,7 +4,9 @@ Public patient website for Biswas Investigation Centre & Clinic (BICC) in Khulna
 
 ## Live site
 
-[bicc-health-khulna.web.app](https://bicc-health-khulna.web.app/)
+[biswasclinic.com](https://biswasclinic.com/)
+
+Firebase fallback: [bicc-health-khulna.web.app](https://bicc-health-khulna.web.app/)
 
 ## Local development
 

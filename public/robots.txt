@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bicc-health-khulna.web.app/sitemap.xml
+Sitemap: https://biswasclinic.com/sitemap.xml
