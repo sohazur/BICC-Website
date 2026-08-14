@@ -90,13 +90,13 @@
 
 ## Implementation checklist
 
-- [ ] Inspect existing DNS, redirects, and Firebase custom-domain state.
-- [ ] Add the apex and `www` custom domains to `bicc-health-khulna` and capture Firebase's exact DNS requirements.
+- [x] Inspect existing DNS, redirects, and Firebase custom-domain state.
+- [x] Add the apex and `www` custom domains to `bicc-health-khulna` and capture Firebase's exact DNS requirements.
 - [ ] Apply the required Namecheap records without disturbing unrelated DNS.
-- [ ] Update production origins and SEO URLs; run automated tests and an optimized build.
-- [ ] Commit and push only `BICC-Website`; deploy only its function codebase and Hosting site.
+- [x] Update production origins and SEO URLs; run automated tests and an optimized build.
+- [x] Commit and push only `BICC-Website`; deploy only its function codebase and Hosting site.
 - [ ] Verify public DNS, managed HTTPS, apex/`www` behavior, and the live saved-enquiry flow.
 
 ## Review
 
-- Pending launch verification.
+- Firebase Hosting is ready for `biswasclinic.com`, with `www.biswasclinic.com` configured to redirect to the apex. The production website and custom-domain origin allowlist are deployed; Namecheap DNS and managed-certificate verification remain pending browser access.
