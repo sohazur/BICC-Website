@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/astro/PageHero.astro';
+import { getDoctorsByGroup, specialtyPages } from '../../seo/doctors';
+import { breadcrumbSchema, entityGraph } from '../../seo/schema';
+const lang = 'en';
+const path = '/specialists';
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Specialists', href: path }];
+---
+<BaseLayout lang={lang} path={path} title="Specialist doctors in Khulna" description="Browse BICC’s owner-provided specialist doctor listings in Sonadanga, Khulna. Search medicine, gynae, surgery, orthopaedics, kidney and child health." schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang={lang} eyebrow="Owner-provided doctor directory" title="Specialist doctors in Khulna" answer="Browse a specialty, compare the listed qualifications and call BICC to confirm the current chamber day, time, fee and patient availability." aliases={['doctor appointment', 'doctor serial', 'specialist chamber', 'Khulna doctor list']} />
+  <section class="listing-section section-pad"><div class="shell card-listing">{specialtyPages.map((page, index) => <a class="content-card" href={`/specialists/${page.slug}`}><span class="card-number">{String(index + 1).padStart(2, '0')}</span><p class="taxonomy">{getDoctorsByGroup('en', page.group).length} listed doctors</p><h2>{page.title.en}</h2><p>{page.intro.en}</p><strong>View listed specialists →</strong></a>)}</div></section>
+</BaseLayout>
+

@@ -1,0 +1,19 @@
+---
+import { site, ui } from '../../seo/site';
+const { lang = 'en', answer, fact, confirm } = Astro.props;
+const copy = ui[lang];
+const steps = lang === 'bn'
+  ? [['সরাসরি উত্তর', answer], ['BICC-এর তথ্য', fact], ['ফোনে নিশ্চিত করুন', confirm], ['পরবর্তী পদক্ষেপ', 'কল, হোয়াটসঅ্যাপ, অনুরোধ বা ম্যাপ—যেটি সহজ সেটি বেছে নিন।']]
+  : [['Direct answer', answer], ['What BICC lists', fact], ['Confirm before travel', confirm], ['Next action', 'Choose call, WhatsApp, a saved request or Maps—whichever is easiest.']];
+---
+<aside class="answer-route" aria-label={lang === 'bn' ? 'রোগীর পরবর্তী ধাপ' : 'Patient answer route'}>
+  <ol>
+    {steps.map(([label, text], index) => <li><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{label}</strong><p>{text}</p></div></li>)}
+  </ol>
+  <div class="answer-route-actions">
+    <a class="button primary" href={`tel:${site.phoneLink}`}>{copy.call}</a>
+    <a class="button secondary" href={site.whatsapp} target="_blank" rel="noreferrer">{copy.whatsapp}</a>
+    <a class="text-link" href={site.map} target="_blank" rel="noreferrer">{copy.directions} →</a>
+  </div>
+</aside>
+

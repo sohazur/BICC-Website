@@ -1,0 +1,37 @@
+---
+import { site, ui } from '../../seo/site';
+const { lang = 'en' } = Astro.props;
+const copy = ui[lang];
+const root = lang === 'bn' ? '/bn' : '';
+---
+<footer class="seo-footer">
+  <div class="shell seo-footer-grid">
+    <div>
+      <a class="seo-brand footer-logo" href={root || '/'}><img src={site.logo} width="600" height="177" alt="BICC" /><span>{site.name[lang]}</span></a>
+      <p>{copy.footer}</p>
+      <p class="footer-address">{site.address[lang]}</p>
+    </div>
+    <div>
+      <h2>{copy.services}</h2>
+      <a href={`${root}/services`}> {copy.services}</a>
+      <a href={`${root}/specialists`}>{copy.specialists}</a>
+      <a href={`${root}/blog`}>{copy.blog}</a>
+      <a href={`${root}/about`}>{copy.about}</a>
+    </div>
+    <div>
+      <h2>{lang === 'bn' ? 'যোগাযোগ' : 'Contact'}</h2>
+      <a href={`tel:${site.phoneLink}`}>{site.phoneDisplay}</a>
+      <a href={site.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
+      <a href={site.map} target="_blank" rel="noreferrer">Google Maps</a>
+      <div class="footer-socials">
+        <a href={site.facebook} target="_blank" rel="noreferrer">Facebook</a>
+        <a href={site.instagram} target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="shell seo-footer-bottom">
+    <span>© {new Date().getFullYear()} {copy.rights}</span>
+    <span>{copy.ownerData}</span>
+  </div>
+</footer>
+

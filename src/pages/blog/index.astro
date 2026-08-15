@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/astro/PageHero.astro';
+import { articles } from '../../seo/articles';
+import { breadcrumbSchema, entityGraph } from '../../seo/schema';
+const path = '/blog';
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Patient guides', href: path }];
+---
+<BaseLayout lang="en" path={path} title="Patient guides for tests, doctors and clinic visits in Khulna" description="Read practical BICC patient guides for choosing a diagnostic centre, comparing clinics, X-ray, ultrasound, ECG, doctor appointments and admission in Khulna." schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang="en" eyebrow="BICC patient answer library" title="Clear answers before you leave home" answer="These practical guides turn common search questions into checklists. They explain what to ask, what to bring and which details must be confirmed—not how to diagnose yourself." aliases={['Khulna diagnostic guide', 'clinic comparison checklist', 'test preparation questions', 'doctor appointment guide']} />
+  <section class="listing-section section-pad"><div class="shell article-listing">{articles.map((article, index) => <a class="article-card" href={`/blog/${article.slug}`}><div><span class="card-number">{String(index + 1).padStart(2, '0')}</span><span class="reading-time">{article.readMinutes} min read</span></div><p class="taxonomy">Patient guide · Khulna</p><h2>{article.title.en}</h2><p>{article.dek.en}</p><strong>Read the guide →</strong></a>)}</div></section>
+</BaseLayout>
+

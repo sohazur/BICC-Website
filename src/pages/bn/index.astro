@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Discovery from '../../components/astro/Discovery.astro';
+import Hero from '../../components/Hero';
+import Diagnostics from '../../components/Diagnostics';
+import Doctors from '../../components/Doctors';
+import Booking from '../../components/Booking';
+import Visit from '../../components/Visit';
+import { Clinic, Pharmacy } from '../../components/CareSections';
+import { copy, PHONE_LINK } from '../../content';
+import { entityGraph } from '../../seo/schema';
+
+const lang = 'bn';
+const t = JSON.parse(JSON.stringify(copy[lang]));
+---
+<BaseLayout lang={lang} path="/bn" title="খুলনায় ডায়াগনস্টিক সেন্টার ও ক্লিনিক — BICC" description="সোনাডাঙ্গা, খুলনায় BICC-এর ১৫৬টি ডায়াগনস্টিক পরীক্ষা, ৬০ জন বিশেষজ্ঞ, ক্লিনিক ভর্তি, OT ও কেবিন সহায়তা দেখুন। বিস্তারিত ফোনে নিশ্চিত করুন।" schemas={[entityGraph]}>
+  <Hero lang={lang} t={t} />
+  <Discovery lang={lang} />
+  <Diagnostics client:load lang={lang} t={t} />
+  <Doctors client:load lang={lang} t={t} />
+  <Clinic lang={lang} t={t} phoneLink={PHONE_LINK} />
+  <Pharmacy t={t} />
+  <Booking client:load lang={lang} t={t} />
+  <Visit lang={lang} t={t} />
+</BaseLayout>
+

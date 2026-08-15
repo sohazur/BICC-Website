@@ -73,11 +73,9 @@ export default function Diagnostics({ lang, t }) {
                   <ChevronDown aria-hidden="true" />
                   <span className="sr-only">{isOpen ? t.closeCategory : t.openCategory}</span>
                 </button>
-                {isOpen && (
-                  <div className="directory-panel" id={panelId}>
-                    <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>
-                  </div>
-                )}
+                <div className="directory-panel" id={panelId} hidden={!isOpen}>
+                  <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
               </article>
             );
           })}

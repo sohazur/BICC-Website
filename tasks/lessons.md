@@ -6,3 +6,4 @@
 - A directory can be searchable and still overwhelm the page. When the full doctor list is available, contain results in an explicitly labelled internal scroll area that shows only two or three rows at a time on both mobile and desktop.
 - Responsive hierarchy must reflect the patient's task: clinic explanation and actions precede supporting imagery on phones, and a signature journey graphic must remain understandable rather than disappearing at the mobile breakpoint.
 - Never ship asset-production notes such as “illustrative image” or “replace later” in patient-facing copy.
+- Keep public-search work in the standalone website repository and Hosting target even when a similarly named internal clinic application exists; verify the Git remote and Firebase site before every commit or deploy.

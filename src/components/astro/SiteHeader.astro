@@ -1,0 +1,46 @@
+---
+import { counterpart, nav, site, ui } from '../../seo/site';
+const { lang = 'en', path = '/' } = Astro.props;
+const copy = ui[lang];
+const alternate = counterpart(lang, path);
+---
+<header class="seo-header">
+  <div class="shell seo-header-inner">
+    <a class="seo-brand" href={lang === 'bn' ? '/bn' : '/'}>
+      <img src={site.logo} width="600" height="177" alt="BICC" />
+      <span>{site.name[lang]}</span>
+    </a>
+    <nav class="seo-nav" aria-label={lang === 'bn' ? 'প্রধান নেভিগেশন' : 'Primary navigation'}>
+      {nav[lang].slice(0, 4).map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+    <div class="seo-header-actions">
+      <a class="language-link" href={alternate} hreflang={lang === 'bn' ? 'en-BD' : 'bn-BD'} title={copy.languageLabel}>{copy.language}</a>
+      <a class="button compact primary" href={lang === 'bn' ? '/bn#contact' : '/#contact'}>{copy.appointment}</a>
+      <button class="seo-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label={copy.menu}>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="seo-mobile-menu" id="mobile-menu" aria-label={lang === 'bn' ? 'মোবাইল নেভিগেশন' : 'Mobile navigation'} hidden>
+    {nav[lang].map(([href, label]) => <a href={href}>{label}</a>)}
+    <a href={lang === 'bn' ? '/bn/about' : '/about'}>{copy.about}</a>
+  </nav>
+</header>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.seo-menu-button');
+    const menu = document.querySelector('#mobile-menu');
+    if (!button || !menu) return;
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      menu.hidden = open;
+    });
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        button.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+      }
+    });
+  });
+</script>

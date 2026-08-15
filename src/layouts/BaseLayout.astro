@@ -1,0 +1,65 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/anek-bangla';
+import '../styles.css';
+import '../seo-styles.css';
+import SiteHeader from '../components/astro/SiteHeader.astro';
+import SiteFooter from '../components/astro/SiteFooter.astro';
+import MobileActions from '../components/astro/MobileActions.astro';
+import { absoluteUrl, counterpart, site, ui } from '../seo/site';
+
+const {
+  lang = 'en',
+  title,
+  description,
+  path = '/',
+  pageType = 'website',
+  schemas = [],
+  noindex = false,
+  image = site.socialImage
+} = Astro.props;
+const copy = ui[lang];
+const alternatePath = counterpart(lang, path);
+const englishPath = lang === 'en' ? path : alternatePath;
+const banglaPath = lang === 'bn' ? path : alternatePath;
+const documentTitle = title.includes('BICC') ? title : `${title} | BICC`;
+---
+<!doctype html>
+<html lang={lang === 'bn' ? 'bn-BD' : 'en-BD'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
+    <link rel="canonical" href={absoluteUrl(path)} />
+    <link rel="alternate" hreflang="en-BD" href={absoluteUrl(englishPath)} />
+    <link rel="alternate" hreflang="bn-BD" href={absoluteUrl(banglaPath)} />
+    <link rel="alternate" hreflang="x-default" href={absoluteUrl(englishPath)} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:site_name" content="Biswas Investigation Centre & Clinic" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={absoluteUrl(path)} />
+    <meta property="og:image" content={absoluteUrl(image)} />
+    <meta property="og:locale" content={lang === 'bn' ? 'bn_BD' : 'en_BD'} />
+    <meta property="og:locale:alternate" content={lang === 'bn' ? 'en_BD' : 'bn_BD'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteUrl(image)} />
+    <meta name="theme-color" content="#07543b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body data-lang={lang}>
+    <a class="skip-link" href="#main-content">{copy.skip}</a>
+    <SiteHeader lang={lang} path={path} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <SiteFooter lang={lang} />
+    <MobileActions lang={lang} />
+  </body>
+</html>
+

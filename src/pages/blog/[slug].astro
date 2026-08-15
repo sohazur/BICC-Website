@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
+import ActionRail from '../../components/astro/ActionRail.astro';
+import { articles } from '../../seo/articles';
+import { services } from '../../seo/services';
+import { articleSchema, breadcrumbSchema, entityGraph } from '../../seo/schema';
+import { formatReviewDate, ui } from '../../seo/site';
+export function getStaticPaths() { return articles.map((article) => ({ params: { slug: article.slug }, props: { article } })); }
+const { article } = Astro.props;
+const path = `/blog/${article.slug}`;
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Patient guides', href: '/blog' }, { label: article.title.en, href: path }];
+---
+<BaseLayout lang="en" path={path} title={article.title.en} description={article.meta.en} pageType="article" schemas={[entityGraph, breadcrumbSchema(crumbs), articleSchema({ title: article.title.en, description: article.meta.en, path, lang: 'en' })]}>
+  <Breadcrumbs items={crumbs} lang="en" />
+  <article class="article-page">
+    <header class="article-header shell"><p class="eyebrow">Patient guide · Khulna</p><h1>{article.title.en}</h1><p class="article-dek">{article.dek.en}</p><div class="article-byline"><span>By the BICC editorial team</span><span>{article.readMinutes} min read</span><span>Reviewed {formatReviewDate('en')}</span></div><div class="direct-answer"><span>Direct answer</span><p>{article.answer.en}</p></div></header>
+    <div class="shell article-layout"><div class="article-body"><h2>{article.slug.includes('best-clinic') ? '10 points to compare' : 'Your practical checklist'}</h2><ol class="article-steps">{article.items.en.map(([title, text], index) => <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>{article.sources?.length && <section class="article-sources"><h2>{ui.en.sources}</h2><p>Sources support the general clinical context. BICC-specific listings are owner-provided.</p><ul>{article.sources.map((source) => <li><a href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a></li>)}</ul></section>}<aside class="medical-disclaimer"><strong>Important</strong><p>{ui.en.disclaimer}</p></aside><section class="related-block"><p class="eyebrow">Related BICC services</p><h2>Move from research to action</h2><div class="mini-grid">{services.slice(0, 3).map((service) => <a href={`/services/${service.slug}`}><strong>{service.title.en}</strong><span>{service.answer.en}</span></a>)}</div></section></div><ActionRail lang="en" answer={article.answer.en} fact="BICC publishes owner-provided service and doctor directories for Sonadanga, Khulna." confirm="Price, preparation, current schedule, availability and report time." /></div>
+  </article>
+</BaseLayout>
+

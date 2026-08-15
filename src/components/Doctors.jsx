@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronsDown, Search, Stethoscope } from 'lucide-react';
 import doctorsEn from '../data/doctors_en.json';
 import doctorsBn from '../data/doctors_bn.json';
@@ -25,7 +25,7 @@ const classifyDoctor = (doctor) => {
 
 export default function Doctors({ lang, t }) {
   const [query, setQuery] = useState('');
-  const [activeGroup, setActiveGroup] = useState('medicine');
+  const [activeGroup, setActiveGroup] = useState('all');
   const [canScroll, setCanScroll] = useState(false);
   const resultsRef = useRef(null);
   const directory = useMemo(() => {
@@ -46,7 +46,7 @@ export default function Doctors({ lang, t }) {
     if (resultsRef.current) resultsRef.current.scrollTop = 0;
   }, [activeGroup, lang, normalizedQuery]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const region = resultsRef.current;
     if (!region) return undefined;
     const measure = () => setCanScroll(region.scrollHeight > region.clientHeight + 2);

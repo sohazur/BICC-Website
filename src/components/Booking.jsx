@@ -5,7 +5,7 @@ import { PHONE_DISPLAY, PHONE_LINK, serviceOptions } from '../content';
 const initialForm = { name: '', phone: '', service: '', date: '', note: '', consent: false, website: '' };
 
 const createRequestId = () => {
-  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (character) => {
     const random = Math.floor(Math.random() * 16);
     return (character === 'x' ? random : (random & 3) | 8).toString(16);
@@ -20,7 +20,10 @@ export default function Booking({ lang, t }) {
   const requestId = useRef(createRequestId());
 
   const selectedService = serviceOptions.find((option) => option.id === form.service)?.[lang] || form.service;
-  const requestText = useMemo(() => t.smsTemplate({ ...form, service: selectedService }), [form, selectedService, t]);
+  const requestText = useMemo(() => lang === 'bn'
+    ? `BICC অ্যাপয়েন্টমেন্ট অনুরোধ\nরোগী: ${form.name}\nফোন: ${form.phone}\nপ্রয়োজন: ${selectedService}\nপছন্দের তারিখ: ${form.date || 'যেকোনো দিন'}${form.note ? `\nনোট: ${form.note}` : ''}`
+    : `BICC appointment request\nPatient: ${form.name}\nPhone: ${form.phone}\nNeed: ${selectedService}\nPreferred date: ${form.date || 'Flexible'}${form.note ? `\nNote: ${form.note}` : ''}`,
+  [form, lang, selectedService]);
   const smsUrl = `sms:${PHONE_LINK}?body=${encodeURIComponent(requestText)}`;
   const whatsappUrl = `https://wa.me/8801912521615?text=${encodeURIComponent(requestText)}`;
 

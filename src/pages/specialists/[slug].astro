@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
+import PageHero from '../../components/astro/PageHero.astro';
+import ActionRail from '../../components/astro/ActionRail.astro';
+import { getDoctorsByGroup, specialtyPages } from '../../seo/doctors';
+import { breadcrumbSchema, entityGraph } from '../../seo/schema';
+import { site } from '../../seo/site';
+export function getStaticPaths() { return specialtyPages.map((specialty) => ({ params: { slug: specialty.slug }, props: { specialty } })); }
+const { specialty } = Astro.props;
+const doctors = getDoctorsByGroup('en', specialty.group);
+const path = `/specialists/${specialty.slug}`;
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Specialists', href: '/specialists' }, { label: specialty.title.en, href: path }];
+---
+<BaseLayout lang="en" path={path} title={specialty.title.en} description={specialty.meta.en} schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs items={crumbs} lang="en" />
+  <PageHero lang="en" eyebrow="BICC specialist directory" title={specialty.title.en} answer={specialty.intro.en} aliases={['doctor appointment', 'specialist chamber', 'doctor serial in Khulna']} />
+  <section class="detail-section section-pad"><div class="shell detail-grid"><div class="detail-main"><div class="doctor-page-heading"><p class="eyebrow">Owner-provided directory</p><h2>{doctors.length} listed specialists</h2><p>Qualifications and institutions are reproduced from BICC’s directory. Chamber schedules are not published because they can change.</p></div><div class="static-doctor-grid">{doctors.map((doctor) => <article class="doctor-card"><p class="doctor-specialty">{doctor.specialty}</p><h3>{doctor.name}</h3><p class="doctor-qualifications">{doctor.qualifications}</p>{doctor.position && doctor.position !== '—' && <p class="doctor-position">{doctor.position}</p>}{doctor.institute && <p class="doctor-institute">{doctor.institute}</p>}<a href={`tel:${site.phoneLink}`}>Call to confirm chamber</a></article>)}</div></div><ActionRail lang="en" answer={specialty.intro.en} fact={`${doctors.length} doctors are listed in this owner-provided category.`} confirm="Current chamber day, time, fee and whether the doctor is accepting patients." /></div></section>
+</BaseLayout>
+

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/astro/PageHero.astro';
+import { getDoctorsByGroup, specialtyPages } from '../../../seo/doctors';
+import { breadcrumbSchema, entityGraph } from '../../../seo/schema';
+const lang = 'bn';
+const path = '/bn/specialists';
+const crumbs = [{ label: 'হোম', href: '/bn' }, { label: 'বিশেষজ্ঞ', href: path }];
+---
+<BaseLayout lang={lang} path={path} title="খুলনায় বিশেষজ্ঞ ডাক্তার" description="সোনাডাঙ্গা, খুলনায় BICC-এর প্রতিষ্ঠান-প্রদত্ত বিশেষজ্ঞ তালিকা দেখুন। মেডিসিন, গাইনি, সার্জারি, অর্থোপেডিকস, কিডনি ও শিশু বিশেষজ্ঞ খুঁজুন।" schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang={lang} eyebrow="প্রতিষ্ঠান-প্রদত্ত ডাক্তার তালিকা" title="খুলনায় বিশেষজ্ঞ ডাক্তার" answer="বিশেষজ্ঞ বিভাগ বেছে তালিকাভুক্ত ডিগ্রি দেখুন। বর্তমান চেম্বারের দিন, সময়, ফি ও রোগী দেখার তথ্য BICC-তে ফোন করে নিশ্চিত করুন।" aliases={['ডাক্তার অ্যাপয়েন্টমেন্ট', 'ডাক্তার সিরিয়াল', 'বিশেষজ্ঞ চেম্বার', 'খুলনা ডাক্তার তালিকা']} />
+  <section class="listing-section section-pad"><div class="shell card-listing">{specialtyPages.map((page, index) => <a class="content-card" href={`/bn/specialists/${page.slug}`}><span class="card-number">{String(index + 1).padStart(2, '0')}</span><p class="taxonomy">তালিকাভুক্ত {getDoctorsByGroup('bn', page.group).length} জন ডাক্তার</p><h2>{page.title.bn}</h2><p>{page.intro.bn}</p><strong>বিশেষজ্ঞ তালিকা দেখুন →</strong></a>)}</div></section>
+</BaseLayout>
+

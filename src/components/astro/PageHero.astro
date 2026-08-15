@@ -1,0 +1,22 @@
+---
+import { formatReviewDate, ui } from '../../seo/site';
+const { lang = 'en', eyebrow, title, answer, aliases = [] } = Astro.props;
+const copy = ui[lang];
+---
+<section class="page-hero">
+  <div class="shell page-hero-grid">
+    <div>
+      <p class="eyebrow"><span aria-hidden="true"></span>{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="page-answer">{answer}</p>
+      {aliases.length > 0 && <div class="alias-list" aria-label={lang === 'bn' ? 'সম্পর্কিত অনুসন্ধানের নাম' : 'Related search terminology'}>{aliases.map((alias) => <span>{alias}</span>)}</div>}
+    </div>
+    <div class="truth-card">
+      <span class="truth-mark" aria-hidden="true">BICC</span>
+      <strong>{copy.confirm}</strong>
+      <p>{copy.ownerData}</p>
+      <small>{copy.lastReviewed}: {formatReviewDate(lang)}</small>
+    </div>
+  </div>
+</section>
+

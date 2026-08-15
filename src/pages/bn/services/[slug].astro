@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import PageHero from '../../../components/astro/PageHero.astro';
+import ActionRail from '../../../components/astro/ActionRail.astro';
+import { services } from '../../../seo/services';
+import { articles } from '../../../seo/articles';
+import { breadcrumbSchema, entityGraph, serviceSchema } from '../../../seo/schema';
+export function getStaticPaths() { return services.map((service) => ({ params: { slug: service.slug }, props: { service } })); }
+const { service } = Astro.props;
+const lang = 'bn';
+const path = `/bn/services/${service.slug}`;
+const crumbs = [{ label: 'হোম', href: '/bn' }, { label: 'সেবাসমূহ', href: '/bn/services' }, { label: service.title.bn, href: path }];
+---
+<BaseLayout lang={lang} path={path} title={service.title.bn} description={service.meta.bn} schemas={[entityGraph, breadcrumbSchema(crumbs), serviceSchema({ title: service.title.bn, description: service.meta.bn, path })]}>
+  <Breadcrumbs items={crumbs} lang={lang} />
+  <PageHero lang={lang} eyebrow="BICC সেবার উত্তর" title={service.title.bn} answer={service.answer.bn} aliases={service.aliases.bn} />
+  <section class="detail-section section-pad"><div class="shell detail-grid"><div class="detail-main"><div class="truth-columns"><section><p class="eyebrow">BICC-এর তালিকা</p><h2>যে তথ্য পাওয়া যায়</h2><ul class="check-list">{service.available.bn.map((item) => <li>{item}</li>)}</ul></section><section class="confirm-panel"><p class="eyebrow">আসার আগে</p><h2>যা নিশ্চিত করবেন</h2><ul class="check-list">{service.confirm.bn.map((item) => <li>{item}</li>)}</ul></section></div>{service.source && <section class="source-note"><h2>চিকিৎসা তথ্যের উৎস</h2><p>শুধু সাধারণ তথ্যের জন্য; আপনার নির্দিষ্ট পরীক্ষার নির্দেশনা অনুসরণ করুন।</p><a href={service.source.url} target="_blank" rel="noreferrer">{service.source.label} ↗</a></section>}<section class="related-block"><p class="eyebrow">পরিকল্পনার পরের ধাপ</p><h2>সম্পর্কিত রোগী গাইড</h2><div class="mini-grid">{articles.slice(0, 3).map((item) => <a href={`/bn/blog/${item.slug}`}><strong>{item.title.bn}</strong><span>{item.dek.bn}</span></a>)}</div></section></div><ActionRail lang={lang} answer={service.answer.bn} fact={service.available.bn[0]} confirm={service.confirm.bn[0]} /></div></section>
+</BaseLayout>
+

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/astro/PageHero.astro';
+import { services } from '../../seo/services';
+import { breadcrumbSchema, entityGraph } from '../../seo/schema';
+const lang = 'en';
+const path = '/services';
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Services', href: path }];
+---
+<BaseLayout lang={lang} path={path} title="Diagnostic and clinic services in Khulna" description="Explore BICC diagnostic tests, X-ray, ultrasonography, ECG, specialist consultation, admission, surgery support and cabins in Sonadanga, Khulna." schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang={lang} eyebrow="BICC service directory" title="Diagnostic and clinic services in Khulna" answer="Start with the service closest to your need. Each page shows what BICC lists, what the website cannot confirm, and the fastest next action." aliases={['diagnostic centre', 'pathology lab', 'clinic admission', 'doctor chamber', 'X-ray and ultrasound']} />
+  <section class="listing-section section-pad"><div class="shell card-listing">{services.map((service, index) => <a class="content-card" href={`/services/${service.slug}`}><span class="card-number">{String(index + 1).padStart(2, '0')}</span><p class="taxonomy">{service.aliases.en.slice(0, 2).join(' · ')}</p><h2>{service.title.en}</h2><p>{service.answer.en}</p><strong>See service details →</strong></a>)}</div></section>
+</BaseLayout>
+

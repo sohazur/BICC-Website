@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/astro/PageHero.astro';
+import { articles } from '../../../seo/articles';
+import { breadcrumbSchema, entityGraph } from '../../../seo/schema';
+const path = '/bn/blog';
+const crumbs = [{ label: 'হোম', href: '/bn' }, { label: 'রোগী নির্দেশিকা', href: path }];
+---
+<BaseLayout lang="bn" path={path} title="খুলনায় পরীক্ষা, ডাক্তার ও ক্লিনিক ভিজিটের রোগী গাইড" description="খুলনায় ডায়াগনস্টিক সেন্টার বাছাই, ক্লিনিক তুলনা, এক্স-রে, আল্ট্রাসাউন্ড, ইসিজি, ডাক্তার অ্যাপয়েন্টমেন্ট ও ভর্তি নিয়ে BICC গাইড পড়ুন।" schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang="bn" eyebrow="BICC রোগী তথ্যভান্ডার" title="বাসা থেকে বের হওয়ার আগেই পরিষ্কার উত্তর" answer="এই ব্যবহারিক গাইডগুলো সাধারণ প্রশ্নকে সহজ চেকলিস্টে সাজায়—কী জিজ্ঞেস করবেন, কী আনবেন এবং কোন তথ্য নিশ্চিত করতে হবে। এগুলো নিজে রোগ নির্ণয়ের নির্দেশনা নয়।" aliases={['খুলনা ডায়াগনস্টিক গাইড', 'ক্লিনিক তুলনা চেকলিস্ট', 'পরীক্ষার প্রস্তুতির প্রশ্ন', 'ডাক্তার অ্যাপয়েন্টমেন্ট গাইড']} />
+  <section class="listing-section section-pad"><div class="shell article-listing">{articles.map((article, index) => <a class="article-card" href={`/bn/blog/${article.slug}`}><div><span class="card-number">{String(index + 1).padStart(2, '0')}</span><span class="reading-time">{article.readMinutes} মিনিটের পাঠ</span></div><p class="taxonomy">রোগী গাইড · খুলনা</p><h2>{article.title.bn}</h2><p>{article.dek.bn}</p><strong>গাইডটি পড়ুন →</strong></a>)}</div></section>
+</BaseLayout>
+

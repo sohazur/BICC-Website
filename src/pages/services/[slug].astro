@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
+import PageHero from '../../components/astro/PageHero.astro';
+import ActionRail from '../../components/astro/ActionRail.astro';
+import { services } from '../../seo/services';
+import { articles } from '../../seo/articles';
+import { breadcrumbSchema, entityGraph, serviceSchema } from '../../seo/schema';
+export function getStaticPaths() { return services.map((service) => ({ params: { slug: service.slug }, props: { service } })); }
+const { service } = Astro.props;
+const lang = 'en';
+const path = `/services/${service.slug}`;
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: service.title.en, href: path }];
+---
+<BaseLayout lang={lang} path={path} title={service.title.en} description={service.meta.en} schemas={[entityGraph, breadcrumbSchema(crumbs), serviceSchema({ title: service.title.en, description: service.meta.en, path })]}>
+  <Breadcrumbs items={crumbs} lang={lang} />
+  <PageHero lang={lang} eyebrow="BICC service answer" title={service.title.en} answer={service.answer.en} aliases={service.aliases.en} />
+  <section class="detail-section section-pad"><div class="shell detail-grid"><div class="detail-main"><div class="truth-columns"><section><p class="eyebrow">What BICC lists</p><h2>Available information</h2><ul class="check-list">{service.available.en.map((item) => <li>{item}</li>)}</ul></section><section class="confirm-panel"><p class="eyebrow">Before you travel</p><h2>Confirm these details</h2><ul class="check-list">{service.confirm.en.map((item) => <li>{item}</li>)}</ul></section></div>{service.source && <section class="source-note"><h2>Clinical source</h2><p>For general context only; follow the instructions for your specific examination.</p><a href={service.source.url} target="_blank" rel="noreferrer">{service.source.label} ↗</a></section>}<section class="related-block"><p class="eyebrow">Continue your plan</p><h2>Related patient guides</h2><div class="mini-grid">{articles.slice(0, 3).map((item) => <a href={`/blog/${item.slug}`}><strong>{item.title.en}</strong><span>{item.dek.en}</span></a>)}</div></section></div><ActionRail lang={lang} answer={service.answer.en} fact={service.available.en[0]} confirm={service.confirm.en[0]} /></div></section>
+</BaseLayout>
+

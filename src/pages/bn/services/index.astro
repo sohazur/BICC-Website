@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/astro/PageHero.astro';
+import { services } from '../../../seo/services';
+import { breadcrumbSchema, entityGraph } from '../../../seo/schema';
+const lang = 'bn';
+const path = '/bn/services';
+const crumbs = [{ label: 'হোম', href: '/bn' }, { label: 'সেবাসমূহ', href: path }];
+---
+<BaseLayout lang={lang} path={path} title="খুলনায় ডায়াগনস্টিক ও ক্লিনিক সেবা" description="সোনাডাঙ্গা, খুলনায় BICC-এর পরীক্ষা, এক্স-রে, আলট্রাসনোগ্রাফি, ইসিজি, বিশেষজ্ঞ, ভর্তি, সার্জারি সহায়তা ও কেবিন দেখুন।" schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <PageHero lang={lang} eyebrow="BICC সেবা তালিকা" title="খুলনায় ডায়াগনস্টিক ও ক্লিনিক সেবা" answer="আপনার প্রয়োজনের কাছাকাছি সেবাটি দিয়ে শুরু করুন। প্রতিটি পাতায় BICC কী তালিকাভুক্ত করেছে, কোন তথ্য ফোনে জানতে হবে এবং পরবর্তী সহজ ধাপ দেখানো হয়েছে।" aliases={['ডায়াগনস্টিক সেন্টার', 'প্যাথলজি ল্যাব', 'ক্লিনিক ভর্তি', 'ডাক্তার চেম্বার', 'এক্স-রে ও আল্ট্রাসাউন্ড']} />
+  <section class="listing-section section-pad"><div class="shell card-listing">{services.map((service, index) => <a class="content-card" href={`/bn/services/${service.slug}`}><span class="card-number">{String(index + 1).padStart(2, '0')}</span><p class="taxonomy">{service.aliases.bn.slice(0, 2).join(' · ')}</p><h2>{service.title.bn}</h2><p>{service.answer.bn}</p><strong>সেবার বিস্তারিত দেখুন →</strong></a>)}</div></section>
+</BaseLayout>
+

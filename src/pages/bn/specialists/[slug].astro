@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import PageHero from '../../../components/astro/PageHero.astro';
+import ActionRail from '../../../components/astro/ActionRail.astro';
+import { getDoctorsByGroup, specialtyPages } from '../../../seo/doctors';
+import { breadcrumbSchema, entityGraph } from '../../../seo/schema';
+import { site } from '../../../seo/site';
+export function getStaticPaths() { return specialtyPages.map((specialty) => ({ params: { slug: specialty.slug }, props: { specialty } })); }
+const { specialty } = Astro.props;
+const doctors = getDoctorsByGroup('bn', specialty.group);
+const path = `/bn/specialists/${specialty.slug}`;
+const crumbs = [{ label: 'হোম', href: '/bn' }, { label: 'বিশেষজ্ঞ', href: '/bn/specialists' }, { label: specialty.title.bn, href: path }];
+---
+<BaseLayout lang="bn" path={path} title={specialty.title.bn} description={specialty.meta.bn} schemas={[entityGraph, breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs items={crumbs} lang="bn" />
+  <PageHero lang="bn" eyebrow="BICC বিশেষজ্ঞ তালিকা" title={specialty.title.bn} answer={specialty.intro.bn} aliases={['ডাক্তার অ্যাপয়েন্টমেন্ট', 'বিশেষজ্ঞ চেম্বার', 'খুলনায় ডাক্তার সিরিয়াল']} />
+  <section class="detail-section section-pad"><div class="shell detail-grid"><div class="detail-main"><div class="doctor-page-heading"><p class="eyebrow">প্রতিষ্ঠান-প্রদত্ত তালিকা</p><h2>তালিকাভুক্ত {doctors.length} জন বিশেষজ্ঞ</h2><p>ডিগ্রি ও প্রতিষ্ঠানের তথ্য BICC-এর তালিকা থেকে দেওয়া হয়েছে। পরিবর্তনশীল হওয়ায় চেম্বারের সময় ওয়েবসাইটে প্রকাশ করা হয়নি।</p></div><div class="static-doctor-grid">{doctors.map((doctor) => <article class="doctor-card"><p class="doctor-specialty">{doctor.specialty}</p><h3>{doctor.name}</h3><p class="doctor-qualifications">{doctor.qualifications}</p>{doctor.position && doctor.position !== '—' && <p class="doctor-position">{doctor.position}</p>}{doctor.institute && <p class="doctor-institute">{doctor.institute}</p>}<a href={`tel:${site.phoneLink}`}>চেম্বার নিশ্চিত করতে কল করুন</a></article>)}</div></div><ActionRail lang="bn" answer={specialty.intro.bn} fact={`এই প্রতিষ্ঠান-প্রদত্ত বিভাগে ${doctors.length} জন ডাক্তার তালিকাভুক্ত আছেন।`} confirm="বর্তমান চেম্বারের দিন, সময়, ফি এবং ডাক্তার রোগী দেখছেন কি না।" /></div></section>
+</BaseLayout>
+

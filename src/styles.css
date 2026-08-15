@@ -15,8 +15,8 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--white); font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; }
-body[data-lang="bn"] { font-family: "Anek Bangla", Manrope, sans-serif; }
+body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--white); font-family: "Manrope Variable", Manrope, sans-serif; -webkit-font-smoothing: antialiased; }
+body[data-lang="bn"] { font-family: "Anek Bangla Variable", "Anek Bangla", "Manrope Variable", Manrope, sans-serif; }
 body[data-lang="bn"] .eyebrow { letter-spacing: 0; text-transform: none; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
@@ -198,7 +198,7 @@ h1 em::after { content: ''; position: absolute; right: -2%; bottom: -10px; left:
 .request-ready.failed > div:first-child > svg { color: #a65f09; }
 .request-ready span { display: grid; }
 .request-ready small { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.5; }
-.request-ready pre { overflow: auto; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; background: #fff; border-radius: 8px; font: 11px/1.6 Manrope,sans-serif; }
+.request-ready pre { overflow: auto; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; background: #fff; border-radius: 8px; font: 11px/1.6 "Manrope Variable",Manrope,sans-serif; }
 .ready-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .button.whatsapp { color: #fff; background: #167e53; }
 

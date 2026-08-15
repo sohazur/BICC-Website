@@ -29,7 +29,7 @@ export default function Hero({ lang, t }) {
                 alt={lang === 'bn' ? 'একজন বাংলাদেশি চিকিৎসক একজন বয়স্ক রোগী ও তাঁর পরিবারের সঙ্গে কথা বলছেন' : 'A Bangladeshi doctor speaking calmly with an older patient and his family'}
                 width="1200"
                 height="800"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             </div>
             <a className="care-note" href={`tel:${PHONE_LINK}`}>
