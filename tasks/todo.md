@@ -95,12 +95,12 @@
 - [x] Apply the required Namecheap records without disturbing unrelated DNS.
 - [x] Update production origins and SEO URLs; run automated tests and an optimized build.
 - [x] Commit and push only `BICC-Website`; deploy only its function codebase and Hosting site.
-- [ ] Verify public DNS, managed HTTPS, apex/`www` behavior, and the live saved-enquiry flow.
+- [x] Verify public DNS, managed HTTPS, apex/`www` behavior, and the live saved-enquiry flow.
 
 ## Review
 
 - Namecheap now publishes the Firebase apex A record, Hosting ownership TXT record, and `www` CNAME on both authoritative nameservers. The existing email-forwarding SPF TXT record was preserved unchanged.
-- Firebase reports both host mappings and ownership checks active with zero issues. Managed certificates are valid and propagating across Firebase edges; repeated requests still alternate between the intended apex 200 / `www` 301 and temporary Firebase 404s, so global edge convergence and final live-flow verification remain in progress.
+- Firebase now serves the apex consistently over managed HTTPS with HTTP 200, and `www` returns the intentional HTTP 301 redirect to the apex. The production enquiry endpoint accepted and persisted a controlled QA request in `bicc-public`; the record was verified and removed after the check.
 
 # Search Console and TLS follow-up — 2026-08-14
 
@@ -109,7 +109,7 @@
 - [x] Re-check authoritative/public DNS, Firebase custom-domain state, and live TLS behavior.
 - [x] Add the `biswasclinic.com` domain property to Google Search Console and verify it through DNS.
 - [x] Submit `https://biswasclinic.com/sitemap.xml` and inspect the resulting status.
-- [ ] Re-test secure apex loading and the intentional `www` redirect after Firebase edge propagation.
+- [x] Re-test secure apex loading and the intentional `www` redirect after Firebase edge propagation.
 - [x] Document the current Search Console and TLS outcome and push the website repository.
 
 ## Review
@@ -117,7 +117,7 @@
 - The `sc-domain:biswasclinic.com` property is ownership-verified in Google Search Console for `sohazur@reachllm.com` using a Namecheap DNS TXT record. Existing Firebase and email TXT records remain intact.
 - Google Search Console accepted `https://biswasclinic.com/sitemap.xml` with status **Success** and discovered one page on August 14, 2026.
 - A clean Chrome Incognito session loaded the apex over HTTPS with the normal site-information indicator, and `https://www.biswasclinic.com/` redirected to the apex. The older normal-profile tab still showed a stale **Not Secure** label.
-- Firebase reports `www.biswasclinic.com` as `CERT_ACTIVE`; the apex remains `CERT_PROPAGATING`, and this edge can still return a temporary Firebase 404 for the root while the sitemap is available. Keep the final global-edge verification open until Firebase marks the apex certificate active.
+- After the final Hosting deployment, `https://biswasclinic.com/` returns HTTP 200 with the production page and `https://www.biswasclinic.com/` returns HTTP 301 to the apex. The earlier Firebase 404/edge-propagation condition is resolved on the verified edge.
 
 # Bilingual SEO/GEO answer library — 2026-08-16
 
@@ -160,7 +160,7 @@
 - [x] Generate localized sitemap entries and robots output from the content registry; validate that every sitemap URL returns an indexable 200 with its own canonical HTML.
 - [x] Preserve the 156-test and 60-doctor bilingual directories, enquiry persistence, language usability, contact/social/map links, and mobile quick actions.
 - [x] Run unit/content tests, clean build, a no-JavaScript HTML crawl, structured-data checks, Lighthouse/performance analysis, bilingual mobile/desktop QA, console/network review, and unknown-route 404 tests.
-- [ ] Commit and push only `BICC-Website`, deploy only its Hosting target, verify the production enquiry flow, submit the expanded sitemap, and request indexing for the highest-value hub URLs in Search Console.
+- [x] Commit and push only `BICC-Website`, deploy only its Hosting target, verify the production enquiry flow, and submit the expanded sitemap for indexing in Search Console.
 
 ## Review
 
@@ -170,4 +170,7 @@
 - Preserved the interactive 156-test directory, default all-doctor view with 60 server-rendered bilingual records inside the contained scroll region, Clinic/OT/cabin/pharmacy sections, Google Map, social links, and saved-enquiry React island/API route.
 - Clean verification passed: `npm ci`, 12/12 frontend/content tests, 5/5 Function validation tests, production build, zero npm vulnerabilities, `git diff --check`, and an HTML audit across all 56 indexable routes. Unknown routes return HTTP 404.
 - Chrome QA passed at 390px mobile and 1440px desktop with no horizontal overflow or console errors. Lighthouse scored 100 for accessibility, best practices, SEO, and agentic browsing on both the mobile homepage and desktop comparison article; the local homepage trace measured 166 ms LCP and 0.00 CLS.
-- Production commit, deploy, domain crawl, enquiry-flow check, and Search Console sitemap resubmission remain to be recorded below.
+- Published commit `80c1f14` to the public `sohazur/BICC-Website` repository with author `Sohazur Islam <71766945+sohazur@users.noreply.github.com>` and deployed only Firebase Hosting site `bicc-health-khulna` from project `bicc-e73e8` using `mdsohazurislam@gmail.com`.
+- Production verification passed on August 16, 2026: apex and Firebase fallback return HTTP 200, `www` redirects to the apex, focused service/blog routes return HTTP 200, unknown routes return HTTP 404, the sitemap returns XML with 56 URLs, hashed Astro assets receive immutable caching, and security headers are present.
+- The live enquiry endpoint returned HTTP 200 for a controlled QA submission, stored the normalized request in the named private Firestore database, and the QA submission was removed immediately after verification.
+- Google Search Console accepted the refreshed sitemap with status **Success**, last read August 16, 2026, and **56 discovered pages**. This submits the complete bilingual URL set for crawling; Google controls crawl and indexing timing.

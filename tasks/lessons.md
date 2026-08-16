@@ -7,3 +7,4 @@
 - Responsive hierarchy must reflect the patient's task: clinic explanation and actions precede supporting imagery on phones, and a signature journey graphic must remain understandable rather than disappearing at the mobile breakpoint.
 - Never ship asset-production notes such as “illustrative image” or “replace later” in patient-facing copy.
 - Keep public-search work in the standalone website repository and Hosting target even when a similarly named internal clinic application exists; verify the Git remote and Firebase site before every commit or deploy.
+- If Chrome extension discovery is unavailable but the user explicitly confirms Computer Use is enabled, use the desktop Computer Use path to operate the real logged-in Chrome session before declaring browser/account access unavailable.
