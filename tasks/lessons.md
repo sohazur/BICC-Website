@@ -8,3 +8,5 @@
 - Never ship asset-production notes such as “illustrative image” or “replace later” in patient-facing copy.
 - Keep public-search work in the standalone website repository and Hosting target even when a similarly named internal clinic application exists; verify the Git remote and Firebase site before every commit or deploy.
 - If Chrome extension discovery is unavailable but the user explicitly confirms Computer Use is enabled, use the desktop Computer Use path to operate the real logged-in Chrome session before declaring browser/account access unavailable.
+- Do not conflate sitemap submission with Search Console's manual **Request indexing** action. When the user asks for direct submission, inspect a small set of high-value hubs, request indexing, and verify Google's priority-crawl confirmation for every URL.
+- In Search Console, changing the inspection field does not reliably move keyboard focus. Click the visible Search button after setting a URL and verify the inspected URL label before clicking **Request indexing**; pressing Return can repeat the previous page's action.

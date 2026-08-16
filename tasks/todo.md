@@ -174,3 +174,19 @@
 - Production verification passed on August 16, 2026: apex and Firebase fallback return HTTP 200, `www` redirects to the apex, focused service/blog routes return HTTP 200, unknown routes return HTTP 404, the sitemap returns XML with 56 URLs, hashed Astro assets receive immutable caching, and security headers are present.
 - The live enquiry endpoint returned HTTP 200 for a controlled QA submission, stored the normalized request in the named private Firestore database, and the QA submission was removed immediately after verification.
 - Google Search Console accepted the refreshed sitemap with status **Success**, last read August 16, 2026, and **56 discovered pages**. This submits the complete bilingual URL set for crawling; Google controls crawl and indexing timing.
+
+# Manual Search Console indexing — 2026-08-17
+
+## Checklist
+
+- [x] Open the verified `sc-domain:biswasclinic.com` property in the owner's logged-in Chrome session.
+- [x] Inspect the English homepage, services hub, blog hub, Bangla homepage, and local diagnostic-centre landing page.
+- [x] Use Search Console's **Request indexing** action for each selected URL and wait for Google's confirmation.
+- [x] Preserve the daily manual quota by relying on the sitemap for the remaining bilingual URLs.
+- [x] Document and push the verified submissions to the standalone website repository.
+
+## Review
+
+- Google Search Console confirmed **Indexing requested** and added each of these URLs to its priority crawl queue: `https://biswasclinic.com/`, `/services`, `/blog`, `/bn`, and `/services/diagnostic-centre-khulna`.
+- At inspection time, the English homepage, services hub, Bangla homepage, and diagnostic-centre page were already reported as indexed. The blog hub was reported as **Discovered – currently not indexed**, so its successful priority-queue confirmation is the most material new submission.
+- Manual submission is a crawl request rather than an indexing guarantee. Google controls when it recrawls and whether a URL remains indexed; repeated submissions do not improve priority.
